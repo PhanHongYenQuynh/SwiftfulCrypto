@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63687A952ABB36C800278FC8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63687A942ABB36C800278FC8 /* SettingsView.swift */; };
 		636967582ABAF4BE0093A16D /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636967572ABAF4BE0093A16D /* CoinRowView.swift */; };
 		6369675A2ABAF5510093A16D /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636967592ABAF5510093A16D /* PreviewProvider.swift */; };
 		6369675E2ABAFE3B0093A16D /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6369675D2ABAFE3B0093A16D /* Double.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63687A942ABB36C800278FC8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		636967572ABAF4BE0093A16D /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		636967592ABAF5510093A16D /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		6369675D2ABAFE3B0093A16D /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63687A932ABB36A100278FC8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				63687A942ABB36C800278FC8 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		63EDCD6D2ABAC5FD007F0DDA = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 			children = (
 				63EDCD922ABACC7D007F0DDA /* Components */,
 				63EDCD8D2ABACAB7007F0DDA /* Home */,
+				63687A932ABB36A100278FC8 /* Settings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 				63EDCD8B2ABAC7AE007F0DDA /* Color.swift in Sources */,
 				63EDCD972ABAD87D007F0DDA /* CircleButtonAnimationView.swift in Sources */,
 				6369675A2ABAF5510093A16D /* PreviewProvider.swift in Sources */,
+				63687A952ABB36C800278FC8 /* SettingsView.swift in Sources */,
 				6369675E2ABAFE3B0093A16D /* Double.swift in Sources */,
 				63EDCD9A2ABADCE0007F0DDA /* CoinModel.swift in Sources */,
 			);
