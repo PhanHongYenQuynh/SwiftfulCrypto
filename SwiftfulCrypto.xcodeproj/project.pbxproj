@@ -9,16 +9,18 @@
 /* Begin PBXBuildFile section */
 		63EDCD7A2ABAC5FD007F0DDA /* SwiftfulCryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EDCD792ABAC5FD007F0DDA /* SwiftfulCryptoApp.swift */; };
 		63EDCD7C2ABAC5FD007F0DDA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EDCD7B2ABAC5FD007F0DDA /* ContentView.swift */; };
-		63EDCD7E2ABAC5FE007F0DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EDCD7D2ABAC5FE007F0DDA /* Assets.xcassets */; };
 		63EDCD812ABAC5FE007F0DDA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EDCD802ABAC5FE007F0DDA /* Preview Assets.xcassets */; };
+		63EDCD882ABAC740007F0DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EDCD872ABAC740007F0DDA /* Assets.xcassets */; };
+		63EDCD8B2ABAC7AE007F0DDA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EDCD8A2ABAC7AE007F0DDA /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63EDCD762ABAC5FD007F0DDA /* SwiftfulCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftfulCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EDCD792ABAC5FD007F0DDA /* SwiftfulCryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoApp.swift; sourceTree = "<group>"; };
 		63EDCD7B2ABAC5FD007F0DDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		63EDCD7D2ABAC5FE007F0DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63EDCD802ABAC5FE007F0DDA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		63EDCD872ABAC740007F0DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Resources/Assets.xcassets; sourceTree = "<group>"; };
+		63EDCD8A2ABAC7AE007F0DDA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +53,10 @@
 		63EDCD782ABAC5FD007F0DDA /* SwiftfulCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				63EDCD892ABAC7A1007F0DDA /* Extensions */,
 				63EDCD792ABAC5FD007F0DDA /* SwiftfulCryptoApp.swift */,
 				63EDCD7B2ABAC5FD007F0DDA /* ContentView.swift */,
-				63EDCD7D2ABAC5FE007F0DDA /* Assets.xcassets */,
+				63EDCD872ABAC740007F0DDA /* Assets.xcassets */,
 				63EDCD7F2ABAC5FE007F0DDA /* Preview Content */,
 			);
 			path = SwiftfulCrypto;
@@ -65,6 +68,14 @@
 				63EDCD802ABAC5FE007F0DDA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		63EDCD892ABAC7A1007F0DDA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				63EDCD8A2ABAC7AE007F0DDA /* Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63EDCD812ABAC5FE007F0DDA /* Preview Assets.xcassets in Resources */,
-				63EDCD7E2ABAC5FE007F0DDA /* Assets.xcassets in Resources */,
+				63EDCD882ABAC740007F0DDA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +150,7 @@
 			files = (
 				63EDCD7C2ABAC5FD007F0DDA /* ContentView.swift in Sources */,
 				63EDCD7A2ABAC5FD007F0DDA /* SwiftfulCryptoApp.swift in Sources */,
+				63EDCD8B2ABAC7AE007F0DDA /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +287,12 @@
 				DEVELOPMENT_TEAM = TUZ25BSX64;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +317,12 @@
 				DEVELOPMENT_TEAM = TUZ25BSX64;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
