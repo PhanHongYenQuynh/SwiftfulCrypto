@@ -16,49 +16,19 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                VStack(alignment: .leading, spacing: 12){
-                    Text("Appearance").font(.headline).fontWeight(.semibold)
-                    
-                    SettingsToggleRowView(imageName: "moon.circle.fill", title: "Dark Mode", imageTintColor: .purple, isOn: $darkModeEnabled)
+            Form{
+                Section(header: Text("Personal Infomat")){
                     
                 }
-                .padding()
-                VStack(alignment: .leading) {
-                    Text("Privacy")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    
-                    VStack {
-                        SettingsToggleRowView(imageName: "faceid",
-                                              title: "Enable Face ID",
-                                              imageTintColor: Color(.darkGray),
-                                              isOn: $enableFaceId)
-                        
-                        Divider()
-                            .padding(.horizontal)
-                        
-                        SettingsRowView(imageName: "lock.circle.fill", title: "Password", imageTintColor:Color (.blue))
-                    }
-                    .background(RoundedRectangle(cornerRadius: 10))
-                    .foregroundColor(Color.theme.background)
-                    
-                }
-                .padding()
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Notifications")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-
-                    SettingsToggleRowView(imageName: "bell.circle.fill",
-                                          title: "Push Notifications",
-                                          imageTintColor: Color(.systemPink),
-                                          isOn: $enableNotifications)
-                }
-                .padding()
                 
             }
+            
+            
+            
+           
+            
+        }
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -74,6 +44,7 @@ struct SettingsView: View {
         }
        
     }
+}
 }
 
 struct SettingsRowView: View {
@@ -130,3 +101,51 @@ struct SettingsToggleRowView: View {
 #Preview {
     SettingsView().preferredColorScheme(.dark)
 }
+
+
+
+
+
+//            VStack{
+//                VStack(alignment: .leading, spacing: 12){
+//                    Text("Appearance").font(.headline).fontWeight(.semibold)
+//
+//                    SettingsToggleRowView(imageName: "moon.circle.fill", title: "Dark Mode", imageTintColor: .purple, isOn: $darkModeEnabled)
+//
+//                }
+//                .padding()
+//                VStack(alignment: .leading) {
+//                    Text("Privacy")
+//                        .font(.headline)
+//                        .fontWeight(.semibold)
+//
+//                    VStack {
+//                        SettingsToggleRowView(imageName: "faceid",
+//                                              title: "Enable Face ID",
+//                                              imageTintColor: Color(.darkGray),
+//                                              isOn: $enableFaceId)
+//
+//                        Divider()
+//                            .padding(.horizontal)
+//
+//                        SettingsRowView(imageName: "lock.circle.fill", title: "Password", imageTintColor:Color (.blue))
+//                    }
+//                    .background(RoundedRectangle(cornerRadius: 10))
+//                    .foregroundColor(Color.theme.background)
+//
+//                }
+//                .padding()
+//
+//                VStack(alignment: .leading, spacing: 12) {
+//                    Text("Notifications")
+//                        .font(.headline)
+//                        .fontWeight(.semibold)
+//
+//                    SettingsToggleRowView(imageName: "bell.circle.fill",
+//                                          title: "Push Notifications",
+//                                          imageTintColor: Color(.systemPink),
+//                                          isOn: $enableNotifications)
+//                }
+//                .padding()
+//
+//            }
