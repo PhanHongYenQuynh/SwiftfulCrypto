@@ -10,8 +10,11 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
+   
     @State private var showPortfolio: Bool = false // animate right
     @State private var showPortfolioView: Bool = false // new sheet
+    @State private var isShowingDeleteConfirmation = false
+  
     
     var body: some View {
         ZStack{
@@ -102,7 +105,29 @@ extension HomeView{
     
     private var portfolioCoinList: some View{
         List{
-            ForEach(vm.portfolioCoins){coin in CoinRowView(coin: coin, showHoldingsColumn: true).listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+            ForEach(vm.portfolioCoins){coin in CoinRowView(coin: coin, showHoldingsColumn: true)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .swipeActions{
+                        Button(role: .destructive){
+                            //show alert when delete
+                            isShowingDeleteConfirmation.toggle()
+                        }label: {
+                            Label("Delete", systemImage: "trash.fill")
+                        }
+                    }
+                
+            }
+            .onDelete{ indexSet in
+                for index in indexSet{
+                    let coinToDelete = vm.portfolioCoins[index]
+                    
+                    // Remove from SwiftUI list (if you haven't already)
+                    vm.portfolioCoins.remove(at: index)
+                    
+                    //Delete the entity from Core Data
+                    vm.updatePortfolio(coin: coinToDelete, amount: 0.0)
+                }
+                
             }
         }
         .listStyle(PlainListStyle())
@@ -120,6 +145,15 @@ extension HomeView{
                 .frame(width: UIScreen.main.bounds.width/3.5,
                        alignment: .trailing
                 )
+            
+            Button(action: {
+                withAnimation(.linear(duration: 2.0)){
+                    vm.reloadData()
+                }
+            }, label: {
+                Image(systemName: "goforward")
+            })
+            .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
         }
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)
