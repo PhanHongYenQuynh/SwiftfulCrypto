@@ -44,7 +44,13 @@ class PortfolioDataService{
     }
     
     
-    
+    func deletePortfolio(coinID: String) {
+        if let entity = savedEntities.first(where: { $0.coinID == coinID }) {
+            container.viewContext.delete(entity)
+            applyChanges()
+        }
+    }
+   
     
     //MARK: PRIVATE
     

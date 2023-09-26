@@ -17,11 +17,14 @@ class HomeViewModel: ObservableObject{
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     
+
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
     private let portfolioDataService = PortfolioDataService()
     private var cancellables = Set<AnyCancellable>()
+
+    
     
     init(){
         addSubscribers()
@@ -68,6 +71,11 @@ class HomeViewModel: ObservableObject{
     func updatePortfolio(coin: CoinModel, amount: Double){
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
+    
+    func deletePortfolio(coin: CoinModel) {
+        portfolioDataService.deletePortfolio(coinID: coin.id)
+    }
+    
     
     func reloadData(){
         isLoading = true

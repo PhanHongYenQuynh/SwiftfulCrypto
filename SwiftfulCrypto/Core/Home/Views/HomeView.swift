@@ -109,24 +109,12 @@ extension HomeView{
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                     .swipeActions{
                         Button(role: .destructive){
-                            //show alert when delete
-                            isShowingDeleteConfirmation.toggle()
+                            //delete swpieActions
+                            vm.deletePortfolio(coin: coin)
                         }label: {
                             Label("Delete", systemImage: "trash.fill")
                         }
                     }
-                
-            }
-            .onDelete{ indexSet in
-                for index in indexSet{
-                    let coinToDelete = vm.portfolioCoins[index]
-                    
-                    // Remove from SwiftUI list (if you haven't already)
-                    vm.portfolioCoins.remove(at: index)
-                    
-                    //Delete the entity from Core Data
-                    vm.updatePortfolio(coin: coinToDelete, amount: 0.0)
-                }
                 
             }
         }
