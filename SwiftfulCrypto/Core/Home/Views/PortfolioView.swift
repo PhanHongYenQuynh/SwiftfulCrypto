@@ -150,11 +150,8 @@ extension PortfolioView{
         //save to portfolio
         vm.updatePortfolio(coin: coin, amount: amount)
         
-        
         // hide keyboard
         UIApplication.shared.endEditing()
-        
-        
         
     }
     
