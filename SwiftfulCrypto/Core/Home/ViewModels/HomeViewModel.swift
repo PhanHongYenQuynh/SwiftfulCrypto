@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UserNotifications
 
 class HomeViewModel: ObservableObject{
     
@@ -16,17 +17,22 @@ class HomeViewModel: ObservableObject{
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     @Published var sortOption: SortOption = .holdings
+    @Published var isShowingPriceAlert: Bool = false
+    @Published var selectedCoinID: String = ""
     
+    let priceAlertDataService = PriceAlertDataService()
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
     private let portfolioDataService = PortfolioDataService()
     private var cancellables = Set<AnyCancellable>()
+
     
     enum SortOption {
         case rank, rankReversed, holdings, holdingsReversed, price, priceReversed
     }
     
     init(){
+        
         addSubscribers()
     }
     
@@ -75,6 +81,11 @@ class HomeViewModel: ObservableObject{
     
     func deletePortfolio(coin: CoinModel) {
         portfolioDataService.deletePortfolio(coinID: coin.id)
+    }
+    
+    func showPriceAlert(_ coinID: String) {
+        isShowingPriceAlert = true
+        selectedCoinID = coinID
     }
     
     

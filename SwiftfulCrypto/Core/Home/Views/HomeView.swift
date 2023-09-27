@@ -14,7 +14,7 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false // animate right
     @State private var showPortfolioView: Bool = false // new sheet
     @State private var isShowingDeleteConfirmation = false
-  
+    @State private var showPriceAlertView = false
     
     var body: some View {
         ZStack{
@@ -46,6 +46,10 @@ struct HomeView: View {
                 
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
+        }
+        .sheet(isPresented: $showPriceAlertView) {
+            PriceAlertView()
+                .environmentObject(vm)
         }
     }
 }
@@ -114,6 +118,18 @@ extension HomeView{
                         }label: {
                             Label("Delete", systemImage: "trash.fill")
                         }
+                        
+                        Button{
+                            // Handle "Alert" button tap
+                                vm.showPriceAlert(coin.id)
+                            // Pass the coin ID to PriceAlertView
+                                vm.selectedCoinID = coin.id
+                                showPriceAlertView.toggle()
+                           
+                        } label: {
+                            Label("Alert", systemImage: "bell.fill")
+                        }
+                        .tint(.green)
                     }
                 
             }
@@ -121,6 +137,7 @@ extension HomeView{
         .listStyle(PlainListStyle())
         
     }
+    
     
     private var columnTitles: some View{
         HStack{
