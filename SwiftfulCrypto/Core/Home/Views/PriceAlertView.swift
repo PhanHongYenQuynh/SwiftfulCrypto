@@ -38,7 +38,7 @@ struct PriceAlertView: View {
                         .foregroundColor(Color.theme.accent)
                         .bold()
                     
-                    TextField("Enter Target Price", text: $targetPrice)
+                    TextField("Enter Price", text: $targetPrice)
                         .keyboardType(.decimalPad)
                         .padding()
                         .background(

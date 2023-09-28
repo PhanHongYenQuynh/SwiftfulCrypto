@@ -46,11 +46,13 @@ struct HomeView: View {
                 
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
+            
         }
         .sheet(isPresented: $showPriceAlertView) {
             PriceAlertView()
                 .environmentObject(vm)
         }
+        
     }
 }
 
@@ -131,7 +133,6 @@ extension HomeView{
                         }
                         .tint(.green)
                     }
-                
             }
         }
         .listStyle(PlainListStyle())
