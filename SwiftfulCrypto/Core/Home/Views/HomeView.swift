@@ -121,10 +121,10 @@ extension HomeView{
                         
                         Button{
                             // Handle "Alert" button tap
-                                vm.showPriceAlert(coin.id)
-                            // Pass the coin ID to PriceAlertView
-                                vm.selectedCoinID = coin.id
-                                showPriceAlertView.toggle()
+                            if let selectedCoin = vm.allCoins.first(where: { $0.id == vm.selectedCoinID }) {
+                                   vm.selectedCoinID = selectedCoin.id
+                                   showPriceAlertView.toggle()
+                               }
                            
                         } label: {
                             Label("Alert", systemImage: "bell.fill")
