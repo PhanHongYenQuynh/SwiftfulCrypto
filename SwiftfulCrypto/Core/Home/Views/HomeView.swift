@@ -119,9 +119,6 @@ extension HomeView{
         List{
             ForEach(vm.portfolioCoins){coin in CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
-                    .onTapGesture {
-                        segue(coin: coin)
-                    }
                     .swipeActions{
                         Button(role: .destructive){
                             //delete swpieActions
@@ -129,6 +126,9 @@ extension HomeView{
                         }label: {
                             Label("Delete", systemImage: "trash.fill")
                         }
+                    }
+                    .onTapGesture {
+                        segue(coin: coin)
                     }
                 
             }
