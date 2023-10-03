@@ -159,21 +159,57 @@ extension DetailView{
         })
     }
     
-    private var websiteSection: some View{
-        VStack(alignment: .leading, spacing: 20){
-            if let websiteString = vm.websiteURL,
-               let url = URL(string: websiteString){
-                Link("Website", destination: url)
+    private var websiteSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            if let websiteString = vm.websiteURL, let websiteURL = URL(string: websiteString) {
+                Link(destination: websiteURL) {
+                    HStack {
+                        Image(systemName: "globe")
+                            .foregroundColor(Color.theme.accent)
+                            .imageScale(.medium)
+                        Text("Homepage")
+                            .font(.headline)
+                            .foregroundColor(Color.theme.secondaryText)
+                            .lineLimit(1)
+                        Spacer()
+                        Text(" \(websiteString)")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                            .lineLimit(1)
+                    }
+                    .padding(10)
+                }
             }
-            
-            if let redditString = vm.redditURL,
-               let url = URL(string: redditString){
-                Link("Reddit", destination: url)
+
+            Divider().background(Color.gray)
+
+            if let redditString = vm.redditURL, let redditURL = URL(string: redditString) {
+                Link(destination: redditURL) {
+                    HStack {
+                        Image(systemName: "r.circle")
+                            .foregroundColor(Color.theme.accent)
+                            .imageScale(.medium)
+                        Text("Reddit")
+                            .font(.headline)
+                            .foregroundColor(Color.theme.secondaryText)
+                            .lineLimit(1)
+                        Spacer()
+                        Text(" \(redditString)")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                            .lineLimit(1)
+                    }
+                    .padding(10)
+                }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accentColor(.blue)
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .font(.headline)
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.theme.background)
+                .shadow(color: Color.theme.accent.opacity(0.4), radius: 5, x: 0, y: 2)
+        )
     }
-    
 }

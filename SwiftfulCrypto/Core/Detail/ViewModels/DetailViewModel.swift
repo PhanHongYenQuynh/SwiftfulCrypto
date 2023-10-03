@@ -16,7 +16,6 @@ class DetailViewModel: ObservableObject{
     @Published var websiteURL: String? = nil
     @Published var redditURL: String? = nil
     
-    
     @Published var coin: CoinModel
     private let coinDetailService: CoinDetailDataService
     private var cancellables = Set<AnyCancellable>()
