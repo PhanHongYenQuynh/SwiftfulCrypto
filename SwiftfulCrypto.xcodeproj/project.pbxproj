@@ -129,9 +129,17 @@
 		63687A932ABB36A100278FC8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				63115D702ABC03B800BDDDD8 /* SettingView.swift */,
+				6383B86E2ACD349A0019AC15 /* Views */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		6383B86E2ACD349A0019AC15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63115D702ABC03B800BDDDD8 /* SettingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		63D6EB5D2AC65F6A00F0F536 /* Detail */ = {
