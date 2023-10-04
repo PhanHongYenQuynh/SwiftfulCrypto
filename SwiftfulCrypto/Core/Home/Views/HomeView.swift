@@ -17,6 +17,7 @@ struct HomeView: View {
     @State private var isShowingDeleteConfirmation = false
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView: Bool = false
+    @State private var darModeEnabled = false
     
     var body: some View {
         ZStack{
@@ -49,7 +50,7 @@ struct HomeView: View {
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
             .sheet(isPresented: $showSettingsView, content: {
-                SettingView()
+                SettingView(darkModeEnabled: $darModeEnabled)
             })
         }
         .background(
