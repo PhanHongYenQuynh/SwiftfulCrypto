@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SettingView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State private var Email = ""
     @State private var Password = ""
-    @State private var darkModeEnabled = false
+    @Binding var darkModeEnabled: Bool
     @State private var selectedLanguage = ""
     @State private var enableNotifications = false
     @State private var languages = ["English", "Spanish", "French", "German"]
@@ -35,7 +36,7 @@ struct SettingView: View {
             .navigationTitle("Settings")
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
-                    XMarButton()
+                    XMarButton(dismiss: _dismiss)
                 }
             }
         }
@@ -46,7 +47,7 @@ struct SettingView: View {
 
 struct SettingView_Preview: PreviewProvider{
     static var previews: some View{
-        SettingView()
+        SettingView(darkModeEnabled: .constant(false))
     }
 }
 
@@ -62,6 +63,12 @@ extension SettingView{
         Section(header: Text("App Settings")){
             Toggle("Dark Mode", isOn: $darkModeEnabled)
                 .toggleStyle(SwitchToggleStyle(tint: .green))
+                .onChange(of: darkModeEnabled,
+                          perform: { _ in
+                            SystemThemeManager
+                                .shared
+                                .handleTheme(darkMode: darkModeEnabled)
+                })
             
             Toggle("Notifications", isOn: $enableNotifications)
                 .toggleStyle(SwitchToggleStyle(tint: .green))

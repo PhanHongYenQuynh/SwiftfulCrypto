@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("darkModeEnabled") private var darkModeEnabled = false
+    
+    
     var body: some View {
         ZStack{
             Color.theme.background.ignoresSafeArea()
@@ -28,6 +32,11 @@ struct ContentView: View {
                 
             }
             .font(.headline)
+        }
+        .onAppear{
+            SystemThemeManager
+                .shared
+                .handleTheme(darkMode: darkModeEnabled)
         }
     }
 }
