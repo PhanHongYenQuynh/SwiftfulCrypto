@@ -11,8 +11,9 @@ struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
    
-    @State private var showPortfolio: Bool = false // animate right
-    @State private var showPortfolioView: Bool = false // new sheet
+    @State private var showPortfolio: Bool = false
+    @State private var showPortfolioView: Bool = false
+    @State private var showSettingsView: Bool = false
     @State private var isShowingDeleteConfirmation = false
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView: Bool = false
@@ -37,7 +38,7 @@ struct HomeView: View {
                 columnTitles
                 
                 if !showPortfolio{
-                    allCoinList
+                    allCoinsList
                         .transition(.move(edge: .leading))
                 }
                 if showPortfolio{
@@ -47,6 +48,9 @@ struct HomeView: View {
                 
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
+            .sheet(isPresented: $showSettingsView, content: {
+                SettingView()
+            })
         }
         .background(
             NavigationLink(
@@ -54,6 +58,7 @@ struct HomeView: View {
                 isActive: $showDetailView,
                 label: { EmptyView()})
         )
+      
     }
 }
 
@@ -78,6 +83,8 @@ extension HomeView{
                 .onTapGesture {
                     if showPortfolio{
                         showPortfolioView.toggle()
+                    } else {
+                        showSettingsView.toggle()
                     }
                 }
                 .background(
@@ -101,18 +108,17 @@ extension HomeView{
         .padding(.horizontal)
     }
     
-    private var allCoinList: some View{
+    private var allCoinsList: some View{
         List{
             ForEach(vm.allCoins){coin in 
                 CoinRowView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                     .onTapGesture {
                         segue(coin: coin)
-                    }
+                }
             }
         }
         .listStyle(PlainListStyle())
-        
     }
     
     private var portfolioCoinList: some View{
