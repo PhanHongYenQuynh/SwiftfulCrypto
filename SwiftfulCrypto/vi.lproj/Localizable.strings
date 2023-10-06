@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  SwiftfulCrypto
+
+  Created by Phan Hong Yen Quynh on 05/10/2023.
+  
+*/
+
+// Localizable.strings (Việt Nam)
+"App Settings" = "Cài đặt ứng dụng";
+"Others" = "Mục khác";
+"Sign out" = "Đăng xuất";
+"Portfolio" = "Danh mục đầu tư";
+"Live Prices" = "Giá trực tuyến";
+"Market Cap" = "Giá trị vốn hoá thị trường";
+"24h Volume" = "24h khối lượng";
+"BTC Dominance" = "Tỷ lệ thị phần của BTC";
+"Portfolio Value" = "Giá trị mục đầu tư";
+"Coin" = "Đồng xu";
+"Price" = "Giá tiền";
+"Holdings" = "Tổng tài sản";
+"Notification" = "Thông báo";
+"Language" = "Ngôn Ngữ";
+"My Account" = "Tài khoản của tôi";
+"Password" = "Mật khẩu";
+"Privacy Policy" = "Chính sách quyền riêng tư";
+"Terms of Service" = "Điều khoản dịch vụ";
+"Disclaimer" = "Tuyên bố miễn trừ trách nhiệm";
+"Edit Portfolio" = "Chỉnh sửa danh mục đầu tư";
+"Current price of %@:" = "Giá mỗi %@:";
+"Amount holding:" = "Số lượng:";
+"Current value:" = "Giá trị hiện tại:";
+"Settings" = "Cài đặt";
+"Overview" = "Tổng quan";
+"Addition Details" = "Chi tiết bổ sung";
+"Homepage" = "Trang chủ";
+"Read more.." = "Đọc thêm...";
+"Less" = "Thu gọn";
+"Vietnamese" = "Tiếng việt";
+"English" = "Tiếng anh";
+"Search by name or symbol..." = "Tìm kiếm...";
+"Save" = "Lưu";
+"24h High"= "Giá Cao trong 24 Giờ";
+"24h Low"= "Giá thấp trong 24 Giờ";
+"24h Price Change"= "Biến Động Giá trong 24 Giờ";
+"24h Market Cap Change"= "Biến Động Vốn Hóa Thị Trường trong 24 Giờ";
+"Block Time"= "Thời Gian Mỗi Khối";
+"Hashing Algorithm"= "Thuật Toán Hashing";
+"Current Price"= "Giá Hiện Tại";
+"Market Capitalization"= "Vốn Hóa Thị Trường";
+"Rank"= "Xếp Hạng";
+"Volume"= "Khối Lượng";

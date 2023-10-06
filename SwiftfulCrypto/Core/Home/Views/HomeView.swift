@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
-   
+    
     @State private var showPortfolio: Bool = false
     @State private var showPortfolioView: Bool = false
     @State private var showSettingsView: Bool = false
@@ -74,7 +74,6 @@ struct HomeView_Preview:PreviewProvider {
             HomeView().navigationBarHidden(true)
         }
         .environmentObject(dev.homeVM)
-     
     }
   
 }
