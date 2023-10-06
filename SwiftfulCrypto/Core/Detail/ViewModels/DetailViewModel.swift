@@ -56,17 +56,27 @@ class DetailViewModel: ObservableObject{
     private func createOverviewArray(coinModel: CoinModel) -> [StatisticModel]{
         let price = coinModel.currentPrice.asCurrencyWith6Decimals()
         let pricePercentChange = coinModel.priceChangePercentage24H
-        let priceStat = StatisticModel(title: "Current Price", value: price, percentageChange: pricePercentChange)
+        let priceStat = StatisticModel(
+            title: NSLocalizedString("Current Price", comment: ""),
+            value: price,
+            percentageChange: pricePercentChange)
         
         let marketCap = "$" + (coinModel.marketCap?.formattedWithAbbreviations() ?? "")
         let marketCapPercentChange = coinModel.marketCapChangePercentage24H
-        let marketCapStat = StatisticModel(title: "Market Capitalization", value: marketCap, percentageChange: marketCapPercentChange)
+        let marketCapStat = StatisticModel(
+            title: NSLocalizedString("Market Capitalization", comment: ""),
+            value: marketCap,
+            percentageChange: marketCapPercentChange)
         
         let rank = "\(coinModel.rank)"
-        let rankStat = StatisticModel(title: "Rank", value: rank)
+        let rankStat = StatisticModel(
+            title: NSLocalizedString("Rank", comment: ""),
+            value: rank)
         
         let volume = "$" + (coinModel.totalVolume?.formattedWithAbbreviations() ?? "")
-        let volumeStat = StatisticModel(title: "Volume", value: volume)
+        let volumeStat = StatisticModel(
+            title: NSLocalizedString("Volume", comment: ""),
+            value: volume)
         
         let overviewArray: [StatisticModel] = [
             priceStat, marketCapStat, rankStat, volumeStat
@@ -76,25 +86,39 @@ class DetailViewModel: ObservableObject{
     
     private func createAdditionalArray(coinDetailModel: CoinDetailModel?, coinModel: CoinModel) -> [StatisticModel]{
         let high = coinModel.high24H?.asCurrencyWith6Decimals() ?? "n/a"
-        let highStat = StatisticModel(title: "24h High", value: high)
+        let highStat = StatisticModel(
+            title: NSLocalizedString("24h High", comment: ""),
+            value: high)
         
         let low = coinModel.low24H?.asCurrencyWith6Decimals() ?? "n/a"
-        let lowStat = StatisticModel(title: "24h Low", value: low)
+        let lowStat = StatisticModel(
+            title: NSLocalizedString("24h Low", comment: ""),
+            value: low)
         
         let priceChange = coinModel.priceChange24H?.asCurrencyWith6Decimals() ?? "n/a"
         let pricePercentChange = coinModel.priceChangePercentage24H
-        let priceChangeStat = StatisticModel(title: "24h Price Change", value: priceChange, percentageChange: pricePercentChange)
+        let priceChangeStat = StatisticModel(
+            title: NSLocalizedString("24h Price Change", comment: ""),
+            value: priceChange,
+            percentageChange: pricePercentChange)
         
         let marketCapChange = "$" + (coinModel.marketCapChange24H?.formattedWithAbbreviations() ?? "")
         let marketCapPercentChange = coinModel.marketCapChangePercentage24H
-        let marketCapChangeStat = StatisticModel(title: "24h Market Cap Change", value: marketCapChange, percentageChange: marketCapPercentChange)
+        let marketCapChangeStat = StatisticModel(
+            title: NSLocalizedString("24h Market Cap Change", comment: ""),
+            value: marketCapChange,
+            percentageChange: marketCapPercentChange)
         
         let blockTime = coinDetailModel?.blockTimeInMinutes ?? 0
         let blockTimeString = blockTime == 0 ? "n/a" : "\(blockTime)"
-        let blockStat = StatisticModel(title: "Block Time", value: blockTimeString)
+        let blockStat = StatisticModel(
+            title: NSLocalizedString("Block Time", comment: ""),
+            value: blockTimeString)
         
         let hashing = coinDetailModel?.hashingAlgorithm ?? "n/a"
-        let hashingStat = StatisticModel(title: "Hashing Algorithm", value: hashing)
+        let hashingStat = StatisticModel(
+            title: NSLocalizedString("Hashing Algorithm", comment: ""),
+            value: hashing)
         
         let additionalArray: [StatisticModel] = [
             highStat, lowStat, priceChangeStat, marketCapChangeStat, blockStat, hashingStat

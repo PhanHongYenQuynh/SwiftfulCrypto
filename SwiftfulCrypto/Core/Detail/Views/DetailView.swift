@@ -118,7 +118,7 @@ extension DetailView{
                             showFullDescription.toggle()
                         }
                     }, label: {
-                        Text(showFullDescription ? "Less" : "Read more..")
+                        Text(NSLocalizedString(showFullDescription ? "Less" : "Read more..", comment: "Read more button text"))
                             .font(.caption)
                             .fontWeight(.bold)
                             .padding(.vertical, 4)

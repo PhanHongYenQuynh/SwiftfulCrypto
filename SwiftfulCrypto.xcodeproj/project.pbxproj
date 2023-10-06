@@ -17,6 +17,7 @@
 		632794DA2ABDA8A6004DC3B3 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632794D92ABDA8A6004DC3B3 /* LocalFileManager.swift */; };
 		632794DC2ABDC1C9004DC3B3 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632794DB2ABDC1C9004DC3B3 /* SearchBarView.swift */; };
 		632794DE2ABDC8AA004DC3B3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632794DD2ABDC8AA004DC3B3 /* UIApplication.swift */; };
+		633615C82ACEDCD10007B9D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 633615CA2ACEDCD10007B9D9 /* Localizable.strings */; };
 		633C74282ABD2DEB00DBA8ED /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C74272ABD2DEB00DBA8ED /* NetworkingManager.swift */; };
 		633CDDB42ACC911300940540 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633CDDB32ACC911300940540 /* String.swift */; };
 		6354BF622AC1ACF000E4CA46 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354BF612AC1ACF000E4CA46 /* HapticManager.swift */; };
@@ -30,6 +31,7 @@
 		638062632ACDE48700870B12 /* RectKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638062622ACDE48700870B12 /* RectKey.swift */; };
 		638062652ACDF91900870B12 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638062642ACDF91900870B12 /* AppSettings.swift */; };
 		6383B8702ACD4C760019AC15 /* SystemThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6383B86F2ACD4C760019AC15 /* SystemThemeManager.swift */; };
+		63C61D172AD067A4000F30BD /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C61D162AD067A4000F30BD /* LanguageManager.swift */; };
 		63D6EB612AC65FB300F0F536 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D6EB602AC65FB300F0F536 /* DetailView.swift */; };
 		63DA75922ABFE672006A0742 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75912ABFE672006A0742 /* PortfolioView.swift */; };
 		63DA75942ABFEAAF006A0742 /* XMarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75932ABFEAAF006A0742 /* XMarButton.swift */; };
@@ -63,6 +65,8 @@
 		632794D92ABDA8A6004DC3B3 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		632794DB2ABDC1C9004DC3B3 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		632794DD2ABDC8AA004DC3B3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		633615C92ACEDCD10007B9D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		633615CB2ACEE0460007B9D9 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633C74272ABD2DEB00DBA8ED /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		633CDDB32ACC911300940540 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		6354BF612AC1ACF000E4CA46 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		638062622ACDE48700870B12 /* RectKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectKey.swift; sourceTree = "<group>"; };
 		638062642ACDF91900870B12 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		6383B86F2ACD4C760019AC15 /* SystemThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemThemeManager.swift; sourceTree = "<group>"; };
+		63C61D162AD067A4000F30BD /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		63D6EB602AC65FB300F0F536 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63DA75912ABFE672006A0742 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		63DA75932ABFEAAF006A0742 /* XMarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarButton.swift; sourceTree = "<group>"; };
@@ -135,6 +140,7 @@
 		63687A932ABB36A100278FC8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				63C61D152AD06780000F30BD /* ViewModels */,
 				6383B86E2ACD349A0019AC15 /* Views */,
 			);
 			path = Settings;
@@ -146,6 +152,15 @@
 				63115D702ABC03B800BDDDD8 /* SettingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		63C61D152AD06780000F30BD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				638062642ACDF91900870B12 /* AppSettings.swift */,
+				63C61D162AD067A4000F30BD /* LanguageManager.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		63D6EB5D2AC65F6A00F0F536 /* Detail */ = {
@@ -203,6 +218,7 @@
 		63EDCD782ABAC5FD007F0DDA /* SwiftfulCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				633615CA2ACEDCD10007B9D9 /* Localizable.strings */,
 				633C74262ABD2DA500DBA8ED /* Utilities */,
 				63EDCD892ABAC7A1007F0DDA /* Extensions */,
 				63115D722ABC045200BDDDD8 /* Services */,
@@ -235,7 +251,6 @@
 				633CDDB32ACC911300940540 /* String.swift */,
 				6383B86F2ACD4C760019AC15 /* SystemThemeManager.swift */,
 				638062622ACDE48700870B12 /* RectKey.swift */,
-				638062642ACDF91900870B12 /* AppSettings.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,6 +369,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 63EDCD6D2ABAC5FD007F0DDA;
 			productRefGroup = 63EDCD772ABAC5FD007F0DDA /* Products */;
@@ -371,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63EDCD812ABAC5FE007F0DDA /* Preview Assets.xcassets in Resources */,
+				633615C82ACEDCD10007B9D9 /* Localizable.strings in Resources */,
 				63EDCD882ABAC740007F0DDA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +414,7 @@
 				6302AEFC2ABF248700EA1D16 /* MarketDataModel.swift in Sources */,
 				63EC41C32AC16CE100FE319C /* PortfolioDataService.swift in Sources */,
 				63EDCD952ABACCB4007F0DDA /* CircleButtonView.swift in Sources */,
+				63C61D172AD067A4000F30BD /* LanguageManager.swift in Sources */,
 				63EDCD8B2ABAC7AE007F0DDA /* Color.swift in Sources */,
 				6302AEF82ABF1C6400EA1D16 /* StatisticView.swift in Sources */,
 				632794DE2ABDC8AA004DC3B3 /* UIApplication.swift in Sources */,
@@ -428,12 +446,25 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		633615CA2ACEDCD10007B9D9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				633615C92ACEDCD10007B9D9 /* en */,
+				633615CB2ACEE0460007B9D9 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		63EDCD822ABAC5FE007F0DDA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -497,6 +528,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

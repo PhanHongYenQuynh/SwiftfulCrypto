@@ -107,7 +107,7 @@ extension PortfolioView{
             }
             Divider()
             HStack{
-                Text("Amount holding: ")
+                Text("Amount holding:")
                 Spacer()
                 TextField("Ex: 1.4", text: $quantityText)
                     .multilineTextAlignment(.trailing)
@@ -133,7 +133,8 @@ extension PortfolioView{
                 dismiss()
                 
             }, label: {
-                Text("Save".uppercased())
+                Text(NSLocalizedString("Save", comment: "Save button text").uppercased())
+                    .foregroundColor(Color.theme.accent)
             })
             .disabled(!(selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText)))
         

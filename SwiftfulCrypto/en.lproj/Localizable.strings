@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  SwiftfulCrypto
+
+  Created by Phan Hong Yen Quynh on 05/10/2023.
+  
+*/
+
+ // Localizable.strings (English)
+
+//"App Settings" = "App Settings";
+//"Others" = "Others";
+//"Sign out" = "Sign out";
+//"Portfolio" = "Portfolio";
+//"Live Prices" = "Live Prices";
+//"Market Cap" = "Market Cap";
+//"24h Volume" = "24h Volume";
+//"BTC Dominance" = "BTC Dominance";
+//"Portfolio Value" = "Portfolio Value";
+//"Coin" = "Coin";
+//"Price" = "Price";
+//"Holdings" = "Holdings";
+//"Notification" = "Notification";
+//"Language" = "Language";
+//"My Account" = "My Account";
+//"Password" = "Password";
+//"Privacy Policy" = "Privacy Policy";
+//"Terms of Service" = "Terms of Service";
+//"Disclaimer" = "Disclaimer";
+//"Edit Portfolio" = "Edit Portfolio";
+//"Current price of:" = "Current price of:";
+//"Amount holding:" = "Amount holding:";
+//"Current value:" = "Current value:";
+//"Settings" = "Settings";
+//"Overview" = "Overview";
+//"Addition Details" = "Addition Details";
+//"Homepage" = "Homepage";
+//"Read more.." = "Read more...";
+//"Less" = "Less";
+//"Vietnamese" = "Vietnamese";
+//"English" = "English";
+//"Search by name or symbol..." = "Search by name or symbol...";
+//"Save" = "Save";
+//"24h High"= "24h High";
+//"24h Low"= "24h Low";
+//"24h Price Change"= "24h Price Change";
+//"24h Market Cap Change"= "24h Market Cap Change";
+//"Block Time"= "Block Time";
+//"Hashing Algorithm"= "Hashing Algorithm";
