@@ -7,9 +7,24 @@
 
 import SwiftUI
 
+
+struct LanguageModifier: ViewModifier {
+    @Environment(\.locale) private var locale
+    @EnvironmentObject private var languageManager: LanguageManager
+
+    func body(content: Content) -> some View {
+        let modifiedContent = content.environment(\.locale, .init(identifier: languageManager.selectedLanguage.code))
+        
+        // Print a message whenever the language changes
+        print("Language changed to: \(languageManager.selectedLanguage.rawValue)")
+        
+        return modifiedContent
+    }
+}
+
+
 struct SettingView: View {
     
-  
     @Environment(\.dismiss) var dismiss
     @State private var Email = ""
     @State private var Password = ""
@@ -23,10 +38,11 @@ struct SettingView: View {
     @State private var previousImage: UIImage?
     @State private var maskAnimation: Bool = false
     
-    @State private var selectedLanguage = ""
+    @StateObject private var languageManager = LanguageManager()
     @State private var enableNotifications = false
-    @State private var languages = ["English", "Spanish", "French", "German"]
-    @State private var selectedLanguageIndex = 0
+
+    
+  
  
     let privacyPolicy = URL(string: "https://www.coingecko.com/en/privacy")!
     let termsofService = URL(string: "https://www.coingecko.com/en/terms")!
@@ -45,7 +61,10 @@ struct SettingView: View {
             .font(.headline)
             .accentColor(.accent)
             .navigationTitle("Settings")
+            .modifier(LanguageModifier())
+            .environmentObject(languageManager)
         }
+        
         
         // DarkMode
         .createImages(
@@ -128,6 +147,8 @@ struct SettingView_Preview: PreviewProvider{
     }
 }
 
+
+
 // MARK: EXTENSION
 
 extension SettingView{
@@ -138,24 +159,26 @@ extension SettingView{
         }
     }
     
-    private var appsettings: some View{
-        Section(header: Text("App Settings")){
-            Toggle("Notifications", isOn: $enableNotifications)
-                .toggleStyle(SwitchToggleStyle(tint: .green))
-            
-            
-            Picker("Language", selection: $selectedLanguageIndex) {
-                    ForEach(0..<languages.count) {
-                        Text(languages[$0])
+    private var appsettings: some View {
+            Section(header: Text("App Settings")) {
+               
+                Toggle("Notification", isOn: $enableNotifications)
+                    .toggleStyle(SwitchToggleStyle(tint: .green))
+                
+                Picker("Language", selection: $languageManager.selectedLanguage) {
+                    ForEach(Language.allCases, id: \.self) { language in
+                        Text(language.rawValue.capitalized)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                .onChange(of: languageManager.selectedLanguage) { _ in
+                    languageManager.changeLanguage(languageManager.selectedLanguage)
+                }
+            }
         }
-        
-    }
     
     private var orthers: some View{
-        Section(header: Text("Orthers")){
+        Section(header: Text("Others")){
             Link("Privacy Policy", destination: privacyPolicy)
             Link("Terms of Service", destination: termsofService)
             Link("Disclaimer", destination: disclaimer)
@@ -178,4 +201,6 @@ extension SettingView{
         }
         
     }
+    
 }
+

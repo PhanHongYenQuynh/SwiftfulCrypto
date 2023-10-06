@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class HomeViewModel: ObservableObject{
     
@@ -16,6 +17,7 @@ class HomeViewModel: ObservableObject{
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     @Published var sortOption: SortOption = .holdings
+  
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
@@ -147,10 +149,20 @@ class HomeViewModel: ObservableObject{
         guard let data = marketDataModel else{
             return stats
         }
-        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
-        let volume = StatisticModel(title: "24h Volume", value: data.volume)
-        let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominace)
-        let portfolioValue = 
+        let marketCap = StatisticModel(
+            title:  NSLocalizedString("Market Cap", comment: ""),
+            value: data.marketCap,
+            percentageChange: data.marketCapChangePercentage24HUsd)
+                                       
+        let volume = StatisticModel(
+            title: NSLocalizedString("24h Volume", comment: ""),
+            value: data.volume)
+        
+        let btcDominance = StatisticModel(
+            title: NSLocalizedString("BTC Dominance", comment: ""),
+            value: data.btcDominace)
+        
+        let portfolioValue =
             portfolioCoins
                 .map({ $0.currentHoldingsValue })
                 .reduce(0, +)
@@ -168,11 +180,9 @@ class HomeViewModel: ObservableObject{
         let precentageChange = ((portfolioValue - previousValue) / previousValue) * 100
         
         let portfolio = StatisticModel(
-            title: "Portfolio Value",
+            title: NSLocalizedString("Portfolio Value", comment: ""),
             value: portfolioValue.asCurrencyWith2Decimals(),
             percentageChange: precentageChange)
-        
-        
         
         stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
         return stats
