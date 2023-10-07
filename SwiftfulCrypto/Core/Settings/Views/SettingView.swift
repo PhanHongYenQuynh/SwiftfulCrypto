@@ -63,6 +63,7 @@ struct SettingView: View {
                 signout
             
             }
+            .listStyle(SidebarListStyle())
             .font(.headline)
             .accentColor(.accent)
             .navigationTitle("Settings")
