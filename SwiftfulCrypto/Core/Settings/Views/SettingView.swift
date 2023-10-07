@@ -194,17 +194,63 @@ extension SettingView{
     
     private var enjoyUsingCrypto: some View {
         Section(header: Text("Enjoy using Crypto Tracker")) {
-                Link("Follow us on Twitter", destination: twitter)
-                Link("Follow us on Instagram", destination: instagram)
-                Link("Join our Discord server", destination: discord)
-                Link("Join our Telegram group", destination: telegram)
-                Link("Rate the CryptoTracker App", destination: disclaimer)
-                NavigationLink(destination: ContactUsView(), isActive: $isContactUsActive) {
+            Link(destination: twitter) {
+                HStack {
+                    Image("twitter")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Follow us on Twitter")
+                }
+            }
+
+            Link(destination: instagram) {
+                HStack {
+                    Image("instagram")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Follow us on Instagram")
+                }
+            }
+
+            Link(destination: discord) {
+                HStack {
+                    Image("discord")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Join our Discord server")
+                }
+            }
+
+            Link(destination: telegram) {
+                HStack {
+                    Image("telegram")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Join our Telegram group")
+                }
+            }
+
+            Link(destination: disclaimer) {
+                HStack {
+                    Image("appstore")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Rate the CryptoTracker App")
+                }
+            }
+
+            NavigationLink(destination: ContactUsView(), isActive: $isContactUsActive) {
+                HStack {
+                    Image("gmail")
+                        .resizable()
+                        .frame(width: 20, height: 20)
                     Text(NSLocalizedString("Contact us", comment: ""))
-                            .foregroundColor(.accent)
+                        .foregroundColor(.accent)
+                }
             }
         }
     }
+
 
     
     

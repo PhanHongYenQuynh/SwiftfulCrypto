@@ -42,11 +42,17 @@ struct HomeView: View {
                     allCoinsList
                         .transition(.move(edge: .leading))
                 }
-                if showPortfolio{
-                    portfolioCoinList
-                        .transition(.move(edge: .trailing))
+                if showPortfolio {
+                    ZStack {
+                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                            portfolioEmtyText
+                        } else {
+                            portfolioCoinList
+                        }
+                    }
+                    .transition(.move(edge: .trailing))
                 }
-                
+
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
         }
@@ -124,6 +130,30 @@ extension HomeView{
             }
         }
         .listStyle(PlainListStyle())
+    }
+    
+    private var portfolioEmtyText: some View{
+        VStack {
+            Image("portfolio")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
+                .clipped()
+                .padding()
+
+            Text("On-the-go Crypto Companion")
+                .font(.headline)
+                .foregroundColor(Color.theme.accent)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .padding(10)
+
+            Text("Stay on top of your crypto investments - organise with multiple portfolios and receive alerts on significant price changes")
+                .font(.callout)
+                .foregroundColor(Color.theme.accent)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+        }
     }
     
     private var portfolioCoinList: some View{
