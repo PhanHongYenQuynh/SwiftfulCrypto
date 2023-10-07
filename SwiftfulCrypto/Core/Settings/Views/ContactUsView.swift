@@ -24,6 +24,7 @@ struct ContactUsView: View {
             }
             .listStyle(SidebarListStyle())
             .navigationTitle(NSLocalizedString("Contact us", comment: ""))
+        
         }
     }
 }
@@ -45,7 +46,6 @@ extension ContactUsView{
                     Spacer()
                     Text("hello@cryptotracker.com")
                         .font(.callout)
-                        .foregroundColor(.blue)
                 }
                 
                 HStack {
@@ -55,9 +55,9 @@ extension ContactUsView{
                     Spacer()
                     Text("+1(559) 742 4592")
                         .font(.callout)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.green)
                 }
-                
+
                 HStack {
                     Text(NSLocalizedString("FAQ:", comment: ""))
                         .font(.headline)
@@ -65,7 +65,6 @@ extension ContactUsView{
                     Spacer()
                     Link("https://www.coingecko.com/faq", destination: faq)
                         .font(.callout)
-                        .foregroundColor(.blue)
                 }
             }
             
