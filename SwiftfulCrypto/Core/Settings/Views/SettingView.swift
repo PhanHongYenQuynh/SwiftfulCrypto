@@ -143,6 +143,13 @@ struct SettingView: View {
             .disabled(currentImage != nil || previousImage != nil || maskAnimation)
         }
         .preferredColorScheme(appSettings.activateDarkMode ? .dark : .light)
+        .background(
+            NavigationLink(
+                    destination: ContactUsView(),
+                    isActive: $isContactUsActive,
+                    label: { EmptyView() }
+            )
+        )
     }
 }
 
@@ -240,20 +247,18 @@ extension SettingView{
                 }
             }
 
-            NavigationLink(destination: ContactUsView(), isActive: $isContactUsActive) {
+            Button(action: {
+                isContactUsActive = true
+            }) {
                 HStack {
                     Image("gmail")
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text(NSLocalizedString("Contact us", comment: ""))
-                        .foregroundColor(.accent)
                 }
             }
         }
     }
-
-
-    
     
     private var signout: some View{
         Section {
