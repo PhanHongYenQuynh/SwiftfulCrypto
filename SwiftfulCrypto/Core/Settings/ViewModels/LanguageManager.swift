@@ -18,6 +18,13 @@ enum Language: String, CaseIterable {
         }
     }
     
+    var localizedString: String {
+        switch self {
+        case .english: return NSLocalizedString("English", comment: "")
+        case .vietnamese: return NSLocalizedString("Vietnamese", comment: "")
+        }
+    }
+    
     static var selected: Language {
         set {
             UserDefaults.standard.set([newValue.code], forKey: "AppleLanguages")
@@ -28,6 +35,7 @@ enum Language: String, CaseIterable {
         }
     }
 }
+
 
 class LanguageManager: ObservableObject {
     @Published var selectedLanguage = Language.english 
