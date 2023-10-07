@@ -43,7 +43,7 @@ struct HomeView: View {
                         .transition(.move(edge: .leading))
                 }
                 if showPortfolio {
-                    ZStack {
+                    ZStack(alignment: .top)  {
                         if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
                             portfolioEmtyText
                         } else {
@@ -127,6 +127,7 @@ extension HomeView{
                     .onTapGesture {
                         segue(coin: coin)
                 }
+                .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(PlainListStyle())
@@ -171,6 +172,7 @@ extension HomeView{
                     .onTapGesture {
                         segue(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
                 
             }
         }
