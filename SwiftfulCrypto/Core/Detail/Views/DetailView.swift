@@ -19,9 +19,6 @@ struct DetailLoadingView: View {
 
 }
 
-
-
-
 struct DetailView: View {
     
     @StateObject private var vm: DetailViewModel

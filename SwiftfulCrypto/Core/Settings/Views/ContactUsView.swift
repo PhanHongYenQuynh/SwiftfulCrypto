@@ -22,7 +22,7 @@ struct ContactUsView: View {
                     .padding()
                 contactUs
             }
-            .navigationTitle(NSLocalizedString("Contact Us", comment: ""))
+            .navigationTitle(NSLocalizedString("Contact us", comment: ""))
         }
     }
 }
