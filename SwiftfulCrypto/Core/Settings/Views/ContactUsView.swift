@@ -22,6 +22,7 @@ struct ContactUsView: View {
                     .padding()
                 contactUs
             }
+            .listStyle(SidebarListStyle())
             .navigationTitle(NSLocalizedString("Contact us", comment: ""))
         }
     }
