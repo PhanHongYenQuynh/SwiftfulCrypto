@@ -40,13 +40,17 @@ struct SettingView: View {
     
     @StateObject private var languageManager = LanguageManager()
     @State private var enableNotifications = false
-
+    @State private var isContactUsActive = false
     
-  
- 
+    
     let privacyPolicy = URL(string: "https://www.coingecko.com/en/privacy")!
     let termsofService = URL(string: "https://www.coingecko.com/en/terms")!
     let disclaimer = URL(string: "https://www.coingecko.com/en/disclaimer")!
+    
+    let twitter = URL(string: "https://twitter.com/coingecko")!
+    let instagram = URL(string: "https://www.instagram.com/coingecko/")!
+    let discord = URL(string: "https://discord.com/invite/EhrkaCH")!
+    let telegram = URL(string: "https://t.me/coingecko")!
     
     // MARK: BODY
     var body: some View {
@@ -54,6 +58,7 @@ struct SettingView: View {
             List{
                 myaccount
                 appsettings
+                enjoyUsingCrypto
                 orthers
                 signout
             
@@ -63,9 +68,9 @@ struct SettingView: View {
             .navigationTitle("Settings")
             .modifier(LanguageModifier())
             .environmentObject(languageManager)
+            
         }
-        
-        
+    
         // DarkMode
         .createImages(
             toggleDarkMode: appSettings.toggleDarkMode,
@@ -167,11 +172,12 @@ extension SettingView{
                 
                 Picker("Language", selection: $languageManager.selectedLanguage) {
                     ForEach(Language.allCases, id: \.self) { language in
-                        Text(language.rawValue.capitalized)
+                        Text(language.localizedString)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
                 .onChange(of: languageManager.selectedLanguage) { _ in
+                    // Call the function to handle language changes
                     languageManager.changeLanguage(languageManager.selectedLanguage)
                 }
             }
@@ -185,6 +191,22 @@ extension SettingView{
         }
         
     }
+    
+    private var enjoyUsingCrypto: some View {
+        Section(header: Text("Enjoy using Crypto Tracker")) {
+                Link("Follow us on Twitter", destination: twitter)
+                Link("Follow us on Instagram", destination: instagram)
+                Link("Join our Discord server", destination: discord)
+                Link("Join our Telegram group", destination: telegram)
+                Link("Rate the CryptoTracker App", destination: disclaimer)
+                NavigationLink(destination: ContactUsView(), isActive: $isContactUsActive) {
+                    Text(NSLocalizedString("Contact us", comment: ""))
+                            .foregroundColor(.accent)
+            }
+        }
+    }
+
+    
     
     private var signout: some View{
         Section {
