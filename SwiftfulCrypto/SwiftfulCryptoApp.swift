@@ -28,7 +28,6 @@ struct SwiftfulCryptoApp: App {
                 .navigationViewStyle(StackNavigationViewStyle())
                 .environmentObject(vm)
                 
-                
                 ZStack{
                     if showLaunchView{
                         LaunchView(showLaunchView: $showLaunchView)
@@ -40,3 +39,5 @@ struct SwiftfulCryptoApp: App {
         }
     }
 }
+
+
