@@ -69,8 +69,8 @@ struct SettingView: View {
             .navigationTitle("Settings")
             .modifier(LanguageModifier())
             .environmentObject(languageManager)
-            
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     
         // DarkMode
         .createImages(

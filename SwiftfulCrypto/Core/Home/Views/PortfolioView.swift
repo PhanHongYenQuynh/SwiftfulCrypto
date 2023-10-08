@@ -134,7 +134,6 @@ extension PortfolioView{
                 
             }, label: {
                 Text(NSLocalizedString("Save", comment: "Save button text").uppercased())
-                    .foregroundColor(Color.theme.accent)
             })
             .disabled(!(selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantityText)))
         

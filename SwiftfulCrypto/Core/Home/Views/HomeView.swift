@@ -138,7 +138,7 @@ extension HomeView{
             Image("portfolio")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 200)
+                .frame(width: UIScreen.main.bounds.width * 0.6)
                 .clipped()
                 .padding()
 

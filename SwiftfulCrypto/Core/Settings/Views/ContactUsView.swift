@@ -17,15 +17,15 @@ struct ContactUsView: View {
                 Image("faq")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 300)
+                    .frame(width: UIScreen.main.bounds.width * 0.6)
                     .clipped()
                     .padding()
                 contactUs
             }
             .listStyle(SidebarListStyle())
             .navigationTitle(NSLocalizedString("Contact us", comment: ""))
-        
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
