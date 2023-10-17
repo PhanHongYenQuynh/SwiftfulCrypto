@@ -1,4 +1,4 @@
-#FIREBASE
+# FIREBASE
 ```
 EMAIL: swiftcryptotracker@gmail.com
 PASS: Như Cũ 
