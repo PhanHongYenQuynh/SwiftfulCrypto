@@ -1,3 +1,9 @@
+# FIREBASE
+```
+EMAIL: swiftcryptotracker@gmail.com
+PASS: Như Cũ 
+```
+
 # How to develop new feature?
 - Step 1: You need cho checkout new branch follow this format: **features/<your-name>/<feature-name>**
   ```
