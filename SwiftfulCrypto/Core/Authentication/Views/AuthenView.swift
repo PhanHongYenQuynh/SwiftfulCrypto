@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AuthenView: View {
+    
+    @EnvironmentObject var viewModel: AuthViewModel
     @State var index = 0
 
     var body: some View {
@@ -106,6 +108,8 @@ struct CShape1 : Shape{
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View{
+        let authViewModel = AuthViewModel()
         AuthenView()
+            .environmentObject(authViewModel)
     }
 }

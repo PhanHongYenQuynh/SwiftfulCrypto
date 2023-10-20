@@ -21,7 +21,9 @@
 		633615C82ACEDCD10007B9D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 633615CA2ACEDCD10007B9D9 /* Localizable.strings */; };
 		633C74282ABD2DEB00DBA8ED /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C74272ABD2DEB00DBA8ED /* NetworkingManager.swift */; };
 		633CDDB42ACC911300940540 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633CDDB32ACC911300940540 /* String.swift */; };
+		634E258D2AE28BAA00B815D6 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E258C2AE28BAA00B815D6 /* ForgotPasswordService.swift */; };
 		6354BF622AC1ACF000E4CA46 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354BF612AC1ACF000E4CA46 /* HapticManager.swift */; };
+		6354F1B82AE27A2400FC4BE2 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354F1B72AE27A2400FC4BE2 /* ForgotPasswordView.swift */; };
 		6359A1152ADFBCEB00B13CBD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359A1142ADFBCEB00B13CBD /* LoginView.swift */; };
 		63626F702AC97D34009C903E /* CoinDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63626F6F2AC97D34009C903E /* CoinDetailModel.swift */; };
 		63626F722AC980F4009C903E /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63626F712AC980F4009C903E /* DetailViewModel.swift */; };
@@ -42,6 +44,7 @@
 		63D6EB612AC65FB300F0F536 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D6EB602AC65FB300F0F536 /* DetailView.swift */; };
 		63D793512AD1303A00713184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D793502AD1303A00713184 /* LaunchScreen.storyboard */; };
 		63D793532AD1343500713184 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D793522AD1343500713184 /* LaunchView.swift */; };
+		63D96B9E2AE2CD730012C129 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D96B9D2AE2CD730012C129 /* ForgotPasswordViewModel.swift */; };
 		63DA75922ABFE672006A0742 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75912ABFE672006A0742 /* PortfolioView.swift */; };
 		63DA75942ABFEAAF006A0742 /* XMarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75932ABFEAAF006A0742 /* XMarButton.swift */; };
 		63DA75962AC04006006A0742 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75952AC04006006A0742 /* CoinLogoView.swift */; };
@@ -106,7 +109,9 @@
 		633615CB2ACEE0460007B9D9 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633C74272ABD2DEB00DBA8ED /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		633CDDB32ACC911300940540 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		634E258C2AE28BAA00B815D6 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		6354BF612AC1ACF000E4CA46 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		6354F1B72AE27A2400FC4BE2 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		6359A1142ADFBCEB00B13CBD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		63626F6F2AC97D34009C903E /* CoinDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailModel.swift; sourceTree = "<group>"; };
 		63626F712AC980F4009C903E /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		63D6EB602AC65FB300F0F536 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63D793502AD1303A00713184 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63D793522AD1343500713184 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		63D96B9D2AE2CD730012C129 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		63DA75912ABFE672006A0742 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		63DA75932ABFEAAF006A0742 /* XMarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarButton.swift; sourceTree = "<group>"; };
 		63DA75952AC04006006A0742 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
@@ -195,6 +201,7 @@
 				63DB03EB2ABD581100AAD045 /* CoinImageService.swift */,
 				6302AEFD2ABF295900EA1D16 /* MarketDataService.swift */,
 				63EC41C22AC16CE100FE319C /* PortfolioDataService.swift */,
+				634E258C2AE28BAA00B815D6 /* ForgotPasswordService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -251,6 +258,7 @@
 				63C997002AE01A5D00DE5081 /* AuthenView.swift */,
 				6359A1142ADFBCEB00B13CBD /* LoginView.swift */,
 				63C996FE2AE0185400DE5081 /* RegistrationView.swift */,
+				6354F1B72AE27A2400FC4BE2 /* ForgotPasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				63C996FA2AE0138400DE5081 /* AuthViewModel.swift */,
+				63D96B9D2AE2CD730012C129 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -572,6 +581,7 @@
 				63115D742ABC049500BDDDD8 /* CoinDataService.swift in Sources */,
 				6302AEFC2ABF248700EA1D16 /* MarketDataModel.swift in Sources */,
 				63EC41C32AC16CE100FE319C /* PortfolioDataService.swift in Sources */,
+				6354F1B82AE27A2400FC4BE2 /* ForgotPasswordView.swift in Sources */,
 				63EDCD952ABACCB4007F0DDA /* CircleButtonView.swift in Sources */,
 				63C61D172AD067A4000F30BD /* LanguageManager.swift in Sources */,
 				63EDCD8B2ABAC7AE007F0DDA /* Color.swift in Sources */,
@@ -583,7 +593,9 @@
 				63EDCD972ABAD87D007F0DDA /* CircleButtonAnimationView.swift in Sources */,
 				6302AEFA2ABF206600EA1D16 /* HomeStatsView.swift in Sources */,
 				638062652ACDF91900870B12 /* AppSettings.swift in Sources */,
+				634E258D2AE28BAA00B815D6 /* ForgotPasswordService.swift in Sources */,
 				6369675A2ABAF5510093A16D /* PreviewProvider.swift in Sources */,
+				63D96B9E2AE2CD730012C129 /* ForgotPasswordViewModel.swift in Sources */,
 				638062632ACDE48700870B12 /* RectKey.swift in Sources */,
 				632794DA2ABDA8A6004DC3B3 /* LocalFileManager.swift in Sources */,
 				632794DC2ABDC1C9004DC3B3 /* SearchBarView.swift in Sources */,

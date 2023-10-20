@@ -14,6 +14,7 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var showingAlert = false
     @State private var isPasswordVisible = false
+    @State private var showingForgotPassword = false
     
     var body: some View {
         ZStack(alignment: .bottom){
@@ -74,12 +75,14 @@ struct LoginView: View {
                     
                     Spacer(minLength: 0)
                     Button(action: {
-                        
-                        
+                        showingForgotPassword.toggle()
                     }){
                         Text("Forget Password?")
                             .foregroundColor(Color.white.opacity(0.6))
                     }
+                    .sheet(isPresented: $showingForgotPassword, content: {
+                        ForgotPasswordView()
+                    })
                 }
                 .padding(.horizontal)
                 .padding(.top, 30)
@@ -159,8 +162,7 @@ extension LoginView: AuthenticationFormProtocol{
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View{
-        let authViewModel = AuthViewModel()
         LoginView(index: .constant(1))
-            .environmentObject(authViewModel)
+            .environmentObject(AuthViewModel())
     }
 }

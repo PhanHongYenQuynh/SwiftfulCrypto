@@ -82,6 +82,7 @@ struct HomeView_Preview:PreviewProvider {
             HomeView().navigationBarHidden(true)
         }
         .environmentObject(dev.homeVM)
+        .environmentObject(AuthViewModel())
     }
   
 }

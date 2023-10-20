@@ -163,14 +163,10 @@ struct SettingView: View {
 
 struct SettingView_Preview: PreviewProvider{
     static var previews: some View{
-        let authViewModel = AuthViewModel()
-        
         SettingView(imageName: "gear", title: "Version", tintColor: Color(.accent))
-            .environmentObject(authViewModel)
+            .environmentObject(AuthViewModel())
     }
 }
-
-
 
 // MARK: EXTENSION
 
