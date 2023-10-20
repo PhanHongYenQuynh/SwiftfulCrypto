@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject var viewModel: AuthViewModel
     
     @State private var showPortfolio: Bool = false
     @State private var showPortfolioView: Bool = false
@@ -21,6 +22,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack{
+            
             // background layer
             Color.theme.background
                 .ignoresSafeArea()
@@ -64,7 +66,7 @@ struct HomeView: View {
         )
         .background(
             NavigationLink(
-                destination: SettingView()
+                destination: SettingView(imageName: "gear", title: "Version", tintColor: Color(.accent))
                     .environmentObject(appSettings),
                 isActive: $showSettingsView,
                 label: { EmptyView() })
@@ -157,6 +159,7 @@ extension HomeView{
         }
     }
     
+
     private var portfolioCoinList: some View{
         List{
             ForEach(vm.portfolioCoins){coin in CoinRowView(coin: coin, showHoldingsColumn: true)

@@ -6,27 +6,35 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct SwiftfulCryptoApp: App {
     
     @StateObject private var vm = HomeViewModel()
     @State private var showLaunchView: Bool = true
+    @StateObject var viewModel = AuthViewModel()
     
     init(){
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.theme.accent)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.theme.accent)]
+        FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
             
             ZStack{
-                NavigationView{
-                    HomeView().navigationBarHidden(true)
+                if viewModel.userSession != nil{
+                    NavigationView{
+                        HomeView()
+                            .navigationBarHidden(true)
+                            .environmentObject(vm)
+                    }
+                    .navigationViewStyle(StackNavigationViewStyle())
+                }else{
+                    AuthenView()
                 }
-                .navigationViewStyle(StackNavigationViewStyle())
-                .environmentObject(vm)
                 
                 ZStack{
                     if showLaunchView{
@@ -36,6 +44,7 @@ struct SwiftfulCryptoApp: App {
                 }
                 .zIndex(2.0)
             }
+            .environmentObject(viewModel)
         }
     }
 }

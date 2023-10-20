@@ -11,7 +11,8 @@ import SwiftUI
 struct LanguageModifier: ViewModifier {
     @Environment(\.locale) private var locale
     @EnvironmentObject private var languageManager: LanguageManager
-
+    
+    
     func body(content: Content) -> some View {
         let modifiedContent = content.environment(\.locale, .init(identifier: languageManager.selectedLanguage.code))
         
@@ -26,6 +27,8 @@ struct LanguageModifier: ViewModifier {
 struct SettingView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     @State private var Email = ""
     @State private var Password = ""
     
@@ -52,6 +55,10 @@ struct SettingView: View {
     let discord = URL(string: "https://discord.com/invite/EhrkaCH")!
     let telegram = URL(string: "https://t.me/coingecko")!
     
+    let imageName: String
+    let title: String
+    let tintColor: Color
+    
     // MARK: BODY
     var body: some View {
         NavigationView {
@@ -60,8 +67,8 @@ struct SettingView: View {
                 appsettings
                 enjoyUsingCrypto
                 orthers
+                general
                 signout
-            
             }
             .listStyle(SidebarListStyle())
             .font(.headline)
@@ -71,7 +78,7 @@ struct SettingView: View {
             .environmentObject(languageManager)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    
+
         // DarkMode
         .createImages(
             toggleDarkMode: appSettings.toggleDarkMode,
@@ -156,7 +163,10 @@ struct SettingView: View {
 
 struct SettingView_Preview: PreviewProvider{
     static var previews: some View{
-        SettingView()
+        let authViewModel = AuthViewModel()
+        
+        SettingView(imageName: "gear", title: "Version", tintColor: Color(.accent))
+            .environmentObject(authViewModel)
     }
 }
 
@@ -167,8 +177,33 @@ struct SettingView_Preview: PreviewProvider{
 extension SettingView{
     private var myaccount: some View{
         Section(header: Text("My Account")){
-            TextField("Email", text: $Email)
-            TextField("Password", text: $Password)
+            if let user = viewModel.currentUser {
+                HStack{
+                    Text(user.initials)
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(width: 72, height: 72)
+                        .background(Color(.systemGray3))
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading, spacing: 4){
+                        Text(user.fullname)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.top, 4)
+                        
+                        Text(user.email)
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }else {
+                // Handle the case when currentUser is nil (not logged in)
+                // You might want to show a login button or other UI in this case.
+                Text("Not logged in")
+                    .foregroundColor(.gray)
+            }
         }
     }
     
@@ -260,19 +295,62 @@ extension SettingView{
         }
     }
     
+    private var general: some View{
+        Section(header: Text("General")){
+            HStack(spacing: 12){
+                Image(systemName: imageName)
+                    .imageScale(.small)
+                    .font(.title)
+                    .foregroundColor(tintColor)
+                
+                Text(title)
+                    .font(.subheadline)
+                    .foregroundColor(.accent)
+                
+                Spacer()
+                Text("1.0.0")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                
+            }
+            
+            Button(action: {
+                // Call the delete account function
+                Task {
+                    await viewModel.deleteAccount()
+                }
+            }) {
+                HStack(spacing: 12){
+                    Image(systemName: "xmark.circle.fill")
+                        .imageScale(.small)
+                        .font(.title)
+                        .foregroundColor(.red)
+                    
+                    Text("Delete Account")
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                        .fontWeight(.bold)
+                }
+            }
+        }
+    }
+    
     private var signout: some View{
         Section {
             Button(action: {
-                
+                viewModel.signOut()
             }) {
-                Text("Sign out")
+                Text("SIGN OUT")
                     .font(.title3)
-                    .foregroundColor(.red)
+                    .foregroundColor(.steel)
+                    .fontWeight(.semibold)
             }
+            
             .frame(maxWidth: .infinity, maxHeight: 10)
             .padding()
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
+        .background(Color.theme.accent)
         
     }
     

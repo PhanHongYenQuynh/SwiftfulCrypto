@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+
 class PortfolioDataService{
     
     private let container: NSPersistentContainer
@@ -15,14 +16,15 @@ class PortfolioDataService{
     private let entityName: String = "PortfolioEntity"
     
     @Published var savedEntities: [PortfolioEntity] = []
+   
     
     init(){
         container = NSPersistentContainer(name: containerName)
         container.loadPersistentStores{ (_, error) in
-            if let error = error{
-                print("Error loading Core Data! \(error)")
-            }
-            self.getPortfolio()
+        if let error = error{
+            print("Error loading Core Data! \(error)")
+        }
+        self.getPortfolio()
         }
     }
     
@@ -50,10 +52,10 @@ class PortfolioDataService{
             applyChanges()
         }
     }
-   
     
-    //MARK: PRIVATE
     
+    
+//MARK: PRIVATE
     private func getPortfolio(){
         let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
         do{
@@ -67,7 +69,8 @@ class PortfolioDataService{
         let entity = PortfolioEntity(context: container.viewContext)
         entity.coinID = coin.id
         entity.amount = amount
-        applyChanges()
+      
+       applyChanges()
     }
     
     private func update(entity: PortfolioEntity, amount: Double){
@@ -92,5 +95,4 @@ class PortfolioDataService{
         save()
         getPortfolio()
     }
-    
 }
