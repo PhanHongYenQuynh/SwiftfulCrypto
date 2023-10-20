@@ -11,6 +11,7 @@ struct PortfolioView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject var viewModel: AuthViewModel
     @State private var selectedCoin: CoinModel? = nil
     @State private var quantityText: String = ""
     
@@ -44,8 +45,6 @@ struct PortfolioView: View {
             })
             
         }
-        
-        
     }
 }
 

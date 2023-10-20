@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
-import CoreData
+
 
 protocol AuthenticationFormProtocol{
     var formIsValid: Bool {get}
@@ -19,7 +19,7 @@ class AuthViewModel: ObservableObject{
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var signInError: Error?
-    
+    @Published var userID: String?
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -83,7 +83,7 @@ class AuthViewModel: ObservableObject{
         
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else{return}
-        
+        self.userID = uid
         guard let snapshot = try? await Firestore.firestore().collection("user").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: User.self)
     }
