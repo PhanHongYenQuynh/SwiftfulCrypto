@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-
 protocol AuthenticationFormProtocol{
     var formIsValid: Bool {get}
 }
@@ -20,7 +19,7 @@ class AuthViewModel: ObservableObject{
     @Published var currentUser: User?
     @Published var signInError: Error?
     @Published var userID: String?
-    
+    static let shared = AuthViewModel() 
     init() {
         self.userSession = Auth.auth().currentUser
         Task {
@@ -89,4 +88,17 @@ class AuthViewModel: ObservableObject{
     }
     
     
+    func signInWithGoogle(tokens: GoogleSignInResultModel) async throws {
+        do {
+            let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+            let authResult = try await Auth.auth().signIn(with: credential)
+            self.userSession = authResult.user
+            await fetchUser()
+        } catch {
+            print("DEBUG: Failed to sign in with Google with error \(error.localizedDescription)")
+            throw error
+        }
+    }
 }
+
+

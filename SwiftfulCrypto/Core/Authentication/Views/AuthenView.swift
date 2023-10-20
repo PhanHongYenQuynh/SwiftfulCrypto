@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
+
+
+@MainActor
+final class AuthenticationViewModel: ObservableObject{
+    func signInGoogle() async throws{
+        let helper = SignInGoogleHelper()
+        let tokens = try await helper.signIn()
+        try await AuthViewModel.shared.signInWithGoogle(tokens: tokens)
+      
+    }
+}
 
 struct AuthenView: View {
     
     @EnvironmentObject var viewModel: AuthViewModel
+    @StateObject private var authetiView = AuthenticationViewModel()
     @State var index = 0
-
     var body: some View {
         GeometryReader {_ in
             
@@ -59,8 +72,13 @@ struct AuthenView: View {
                     }
                     
                     Button(action: {
-                        
-                        
+                        Task{
+                            do{
+                                try await authetiView.signInGoogle()
+                            }catch{
+                                print(error)
+                            }
+                        }
                     }){
                         Image("google")
                             .resizable()
