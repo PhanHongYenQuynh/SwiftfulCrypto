@@ -62,7 +62,9 @@ struct AuthenView: View {
                     Button(action: {
                         Task{
                             do{
-                                try await viewModel.signInWithGoogle()
+                                if await viewModel.signInWithGoogle() {
+                                    await viewModel.fetchUser()
+                                }
                             }catch{
                                 print(error)
                             }

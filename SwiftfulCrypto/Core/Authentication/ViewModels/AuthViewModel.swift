@@ -115,7 +115,7 @@ class AuthViewModel: ObservableObject{
             let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
             let result = try await Auth.auth().signIn(with: credential)
             let firebaseUser = result.user
-            print("User\(firebaseUser.uid) signed in with email \(firebaseUser.email ?? "unknown")")
+            print("User: \(firebaseUser.uid) signed in with email \(firebaseUser.email ?? "unknown")")
             return true
         }
         catch{
