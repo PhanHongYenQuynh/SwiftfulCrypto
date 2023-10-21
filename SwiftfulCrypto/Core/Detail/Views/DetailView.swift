@@ -76,7 +76,7 @@ struct DetailView_Preview: PreviewProvider{
  
 }
 
-
+// MARK: - EXTENSION
 extension DetailView{
     
     private var navigationBarTrallingItems: some View{

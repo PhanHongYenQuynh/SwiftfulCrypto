@@ -35,6 +35,7 @@ struct ContactUsView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - EXTENSION
 extension ContactUsView{
     private var contactUs: some View{
         Section(header: Text(NSLocalizedString("Contact us", comment: "")))  {

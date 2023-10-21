@@ -168,8 +168,7 @@ struct SettingView_Preview: PreviewProvider{
     }
 }
 
-// MARK: EXTENSION
-
+// MARK: - EXTENSION
 extension SettingView{
     private var myaccount: some View{
         Section(header: Text("My Account")){

@@ -55,7 +55,7 @@ struct PortfolioView_Previews: PreviewProvider{
             .environmentObject(AuthViewModel())
     }
 }
-
+// MARK: - EXTENSION
 extension PortfolioView{
     private var coinLogoList: some View{
         ScrollView(.horizontal, showsIndicators: true, content:{

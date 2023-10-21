@@ -179,7 +179,7 @@ func isPasswordValid(_ password: String) -> Bool {
         return passwordTest.evaluate(with: password)
     }
 
-// MARK - AuthenticationFormProtocol
+// MARK: - AuthenticationFormProtocol
 extension RegistrationView: AuthenticationFormProtocol {
     var formIsValid: Bool {
         return !email.isEmpty

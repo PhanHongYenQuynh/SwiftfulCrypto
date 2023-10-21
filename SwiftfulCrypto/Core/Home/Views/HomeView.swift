@@ -87,7 +87,7 @@ struct HomeView_Preview:PreviewProvider {
   
 }
 
-
+// MARK: - EXTENSION
 extension HomeView{
     
     private var homeHeader: some View{

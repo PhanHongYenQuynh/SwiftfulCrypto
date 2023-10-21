@@ -150,7 +150,7 @@ struct LoginView: View {
 
 
 
-// MARK - AuthenticationFormProtocol
+// MARK: - AuthenticationFormProtocol
 extension LoginView: AuthenticationFormProtocol{
     var formIsValid: Bool {
         return !email.isEmpty

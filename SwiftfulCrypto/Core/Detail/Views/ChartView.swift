@@ -70,7 +70,7 @@ struct ChartView_Preview: PreviewProvider{
         ChartView(coin: dev.coin)
     }
 }
-
+// MARK: - EXTENSION
 extension ChartView {
     
     private var chartView: some View {
