@@ -71,6 +71,7 @@ class HomeViewModel: ObservableObject{
         
     }
     
+    
     func updatePortfolio(coin: CoinModel, amount: Double){
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
@@ -79,13 +80,13 @@ class HomeViewModel: ObservableObject{
         portfolioDataService.deletePortfolio(coinID: coin.id)
     }
     
-    
     func reloadData(){
         isLoading = true
         coinDataService.getCoins()
         marketDataService.getData()
         HapticManager.notification(type: .success)
     }
+    
     
     private func filterAndSortCoins(text: String, coins: [CoinModel], sort: SortOption)->[CoinModel]{
         var updatedCoins = filterCoins(text: text, coins: coins)

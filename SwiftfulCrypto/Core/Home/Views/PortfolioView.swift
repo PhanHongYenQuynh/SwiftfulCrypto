@@ -11,6 +11,7 @@ struct PortfolioView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject var viewModel: AuthViewModel
     @State private var selectedCoin: CoinModel? = nil
     @State private var quantityText: String = ""
     
@@ -48,13 +49,13 @@ struct PortfolioView: View {
 }
 
 struct PortfolioView_Previews: PreviewProvider{
- 
     static var previews: some View{
         PortfolioView()
             .environmentObject(dev.homeVM)
+            .environmentObject(AuthViewModel())
     }
 }
-
+// MARK: - EXTENSION
 extension PortfolioView{
     private var coinLogoList: some View{
         ScrollView(.horizontal, showsIndicators: true, content:{
