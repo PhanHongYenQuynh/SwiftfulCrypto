@@ -59,7 +59,7 @@ struct SettingView: View {
     let title: String
     let tintColor: Color
     
-    // MARK: BODY
+// MARK: - BODY
     var body: some View {
         NavigationView {
             List{
@@ -79,7 +79,7 @@ struct SettingView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
 
-        // DarkMode
+//MARK: - DARKMODE
         .createImages(
             toggleDarkMode: appSettings.toggleDarkMode,
             currentImage: $currentImage,
@@ -160,7 +160,7 @@ struct SettingView: View {
     }
 }
 
-
+// MARK: - PREVIEW
 struct SettingView_Preview: PreviewProvider{
     static var previews: some View{
         SettingView(imageName: "gear", title: "Version", tintColor: Color(.accent))
@@ -196,7 +196,7 @@ extension SettingView{
             }else {
                 // Handle the case when currentUser is nil (not logged in)
                 // You might want to show a login button or other UI in this case.
-                Text("Not logged in")
+                Text("Unknow 🤔")
                     .foregroundColor(.gray)
             }
         }
