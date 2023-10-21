@@ -47,8 +47,6 @@
 		63D96B9E2AE2CD730012C129 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D96B9D2AE2CD730012C129 /* ForgotPasswordViewModel.swift */; };
 		63D96BA12AE2D95D0012C129 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 63D96BA02AE2D95D0012C129 /* GoogleSignIn */; };
 		63D96BA32AE2D95D0012C129 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63D96BA22AE2D95D0012C129 /* GoogleSignInSwift */; };
-		63D96BA82AE2DC410012C129 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D96BA72AE2DC410012C129 /* Utilities.swift */; };
-		63D96BAA2AE2EBC20012C129 /* SigInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D96BA92AE2EBC20012C129 /* SigInGoogleHelper.swift */; };
 		63DA75922ABFE672006A0742 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75912ABFE672006A0742 /* PortfolioView.swift */; };
 		63DA75942ABFEAAF006A0742 /* XMarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75932ABFEAAF006A0742 /* XMarButton.swift */; };
 		63DA75962AC04006006A0742 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA75952AC04006006A0742 /* CoinLogoView.swift */; };
@@ -138,8 +136,6 @@
 		63D793522AD1343500713184 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		63D96B9D2AE2CD730012C129 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		63D96BA42AE2D9DC0012C129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		63D96BA72AE2DC410012C129 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		63D96BA92AE2EBC20012C129 /* SigInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigInGoogleHelper.swift; sourceTree = "<group>"; };
 		63DA75912ABFE672006A0742 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		63DA75932ABFEAAF006A0742 /* XMarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarButton.swift; sourceTree = "<group>"; };
 		63DA75952AC04006006A0742 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
@@ -221,7 +217,6 @@
 				633C74272ABD2DEB00DBA8ED /* NetworkingManager.swift */,
 				632794D92ABDA8A6004DC3B3 /* LocalFileManager.swift */,
 				6354BF612AC1ACF000E4CA46 /* HapticManager.swift */,
-				63D96BA72AE2DC410012C129 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -278,7 +273,6 @@
 			children = (
 				63C996FA2AE0138400DE5081 /* AuthViewModel.swift */,
 				63D96B9D2AE2CD730012C129 /* ForgotPasswordViewModel.swift */,
-				63D96BA92AE2EBC20012C129 /* SigInGoogleHelper.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -593,7 +587,6 @@
 				630525E62AD1020100551C2E /* ContactUsView.swift in Sources */,
 				63626F702AC97D34009C903E /* CoinDetailModel.swift in Sources */,
 				63EDCD7A2ABAC5FD007F0DDA /* SwiftfulCryptoApp.swift in Sources */,
-				63D96BA82AE2DC410012C129 /* Utilities.swift in Sources */,
 				63115D742ABC049500BDDDD8 /* CoinDataService.swift in Sources */,
 				6302AEFC2ABF248700EA1D16 /* MarketDataModel.swift in Sources */,
 				63EC41C32AC16CE100FE319C /* PortfolioDataService.swift in Sources */,
@@ -613,7 +606,6 @@
 				6369675A2ABAF5510093A16D /* PreviewProvider.swift in Sources */,
 				63D96B9E2AE2CD730012C129 /* ForgotPasswordViewModel.swift in Sources */,
 				638062632ACDE48700870B12 /* RectKey.swift in Sources */,
-				63D96BAA2AE2EBC20012C129 /* SigInGoogleHelper.swift in Sources */,
 				632794DA2ABDA8A6004DC3B3 /* LocalFileManager.swift in Sources */,
 				632794DC2ABDC1C9004DC3B3 /* SearchBarView.swift in Sources */,
 				63E14F822ACC7A060098A19C /* ChartView.swift in Sources */,

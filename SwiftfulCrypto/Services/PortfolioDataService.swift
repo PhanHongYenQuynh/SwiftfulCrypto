@@ -31,7 +31,7 @@ class PortfolioDataService {
         }
     }
     
-    // MARK: PUBLIC
+    // MARK: - PUBLIC
     func updatePortfolio(coin: CoinModel, amount: Double) {
         // Check if user is logged in
         guard let userID = Auth.auth().currentUser?.uid else {
@@ -58,7 +58,7 @@ class PortfolioDataService {
         }
     }
     
-    // MARK: PRIVATE
+    // MARK: - PRIVATE
     private func getPortfolio(for userID: String) {
         let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
         request.predicate = NSPredicate(format: "userID == %@", userID)

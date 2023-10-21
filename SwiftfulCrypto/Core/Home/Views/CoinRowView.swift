@@ -40,7 +40,7 @@ struct CoinRowView_Previews: PreviewProvider{
         
     }
 }
-
+// MARK: - EXTENSION
 extension CoinRowView{
     
     private var leftColumn: some View{
