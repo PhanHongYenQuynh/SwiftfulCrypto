@@ -13,9 +13,10 @@ struct RegistrationView: View {
     @State private var fullname = ""
     @State private var Repass = ""
     @State private var isPasswordVisible = false
+    @State private var showAlert = false
     @Binding var index : Int
     @EnvironmentObject var viewModel: AuthViewModel
-    
+   
     var body: some View {
         ZStack(alignment: .bottom){
             VStack{
@@ -147,7 +148,11 @@ struct RegistrationView: View {
             
             Button(action:{
                 Task{
-                    try await viewModel.createUser(withEmail:email, password: password, fullname: fullname)
+                    do {
+                       try await viewModel.createUser(withEmail: email, password: password, fullname: fullname)
+                   } catch {
+                       showAlert = true
+                   }
                 }
             }){
                 Text("SiGNUP")
@@ -169,6 +174,22 @@ struct RegistrationView: View {
             // Only button
             .opacity(self.index == 1 ? 1 : 0)
             .preferredColorScheme(.dark)
+        }
+        .onReceive(viewModel.$signUpError) { error in
+            if let error = error {
+                showAlert = true
+                print("Registration error: \(error.localizedDescription)")
+            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text("This email is already in use. Please use a different email."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .onAppear {
+            showAlert = false
         }
     }
 }
