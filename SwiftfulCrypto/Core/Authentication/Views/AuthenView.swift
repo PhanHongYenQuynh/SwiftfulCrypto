@@ -8,6 +8,7 @@
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
+import AuthenticationServices
 
 struct AuthenView: View {
     
@@ -48,17 +49,31 @@ struct AuthenView: View {
                 
                 HStack(spacing: 25){
                     
-                    Button(action: {
-                        
-                        
-                    }){
-                        Image("apple")
+                    HStack{
+                        Image("applelogo")
                             .resizable()
-                            .renderingMode(.original)
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25)
+                            .frame(height: 45)
+                        Text("Apple Sign In")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .lineLimit(1)
                     }
-                    
+                    .padding(.horizontal, 15)
+                    .background{
+                        RoundedRectangle(cornerRadius: 10, style: .continuous).fill(.black)
+                    }
+                    .overlay{
+                        SignInWithAppleButton(.signIn) { request in
+                            viewModel.handleSignInWithAppleRequest(request)
+                        } onCompletion: { result in
+                            viewModel.handleSignInWithAppleCompletion(result)
+                        }
+                    }
+                    .signInWithAppleButtonStyle(.white)
+                    .frame(height: 55)
+                        
                     Button(action: {
                         Task{
                             do{
@@ -88,6 +103,7 @@ struct AuthenView: View {
     }
 }
 
+// MARK: - CSHAPE
 struct CShape : Shape{
     func path(in rect: CGRect) -> Path {
         return Path{path in
