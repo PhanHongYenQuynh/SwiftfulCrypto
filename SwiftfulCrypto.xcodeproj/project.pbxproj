@@ -107,6 +107,7 @@
 		632794D92ABDA8A6004DC3B3 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		632794DB2ABDC1C9004DC3B3 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		632794DD2ABDC8AA004DC3B3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		632C008A2AEEBE9700164688 /* SwiftfulCryptoDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftfulCryptoDebug.entitlements; sourceTree = "<group>"; };
 		633615C92ACEDCD10007B9D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633615CB2ACEE0460007B9D9 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		633C74272ABD2DEB00DBA8ED /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -350,6 +351,7 @@
 		63EDCD782ABAC5FD007F0DDA /* SwiftfulCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				632C008A2AEEBE9700164688 /* SwiftfulCryptoDebug.entitlements */,
 				638965D32AE6970400E08451 /* SwiftfulCryptoRelease.entitlements */,
 				63D96BA42AE2D9DC0012C129 /* Info.plist */,
 				633615CA2ACEDCD10007B9D9 /* Localizable.strings */,
@@ -771,6 +773,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = SwiftfulCrypto/SwiftfulCryptoDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftfulCrypto/Preview Content\"";
