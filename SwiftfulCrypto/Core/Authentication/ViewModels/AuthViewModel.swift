@@ -23,6 +23,7 @@ class AuthViewModel: ObservableObject{
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var signInError: Error?
+    @Published var signUpError: Error?
     @Published var userID: String?
     static let shared = AuthViewModel() 
     init() {
@@ -52,6 +53,7 @@ class AuthViewModel: ObservableObject{
             try await Firestore.firestore().collection("user").document(user.id).setData(encodedUser)
             await fetchUser()
         } catch {
+            signUpError = error
             print("DEBUG: Failed to create user with error \(error.localizedDescription)")
         }
 }
@@ -116,6 +118,21 @@ class AuthViewModel: ObservableObject{
             let result = try await Auth.auth().signIn(with: credential)
             let firebaseUser = result.user
             print("User: \(firebaseUser.uid) signed in with email \(firebaseUser.email ?? "unknown")")
+            
+            // Update userSession
+            self.userSession = firebaseUser
+            
+            // Update currentUser
+            let currentUser = User(id: firebaseUser.uid, fullname: firebaseUser.displayName ?? "Unknown", email: firebaseUser.email ?? "Unknown")
+            self.currentUser = currentUser
+            
+            // Add or update user in Firestore
+            do {
+                try await Firestore.firestore().collection("user").document(firebaseUser.uid).setData(["fullname": currentUser.fullname, "email": currentUser.email, "id": firebaseUser.uid])
+            } catch {
+                print("Error saving data to Firestore: \(error.localizedDescription)")
+            }
+            
             return true
         }
         catch{
@@ -128,3 +145,5 @@ class AuthViewModel: ObservableObject{
 }
 
 
+//try await Firestore.firestore().collection("user").document(user.id).setData(encodedUser)
+//await fetchUser()
