@@ -42,7 +42,9 @@ struct SettingView: View {
     @State private var maskAnimation: Bool = false
     
     @StateObject private var languageManager = LanguageManager()
-    @State private var enableNotifications = false
+    @StateObject private var notificationManager = NotificationManager()
+    @AppStorage("enableNotifications") private var enableNotifications = false
+
     @State private var isContactUsActive = false
     
     
@@ -207,6 +209,15 @@ extension SettingView{
                
                 Toggle("Notification", isOn: $enableNotifications)
                     .toggleStyle(SwitchToggleStyle(tint: .green))
+                
+                    .onChange(of: enableNotifications) { newValue in
+                        if newValue {
+                            notificationManager.requestAuthorization()
+                            notificationManager.scheduleNotification()
+                        } else {
+                            notificationManager.cancelNotification()
+                        }
+                    }
                 
                 Picker("Language", selection: $languageManager.selectedLanguage) {
                     ForEach(Language.allCases, id: \.self) { language in
