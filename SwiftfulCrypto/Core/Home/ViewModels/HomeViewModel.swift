@@ -87,6 +87,11 @@ class HomeViewModel: ObservableObject{
         HapticManager.notification(type: .success)
     }
     
+    // Function to check and send notifications.
+    func checkAndSendNotification(newPrice: Double) {
+        NotificationManager.instance.checkAndSendNotification(newPrice: newPrice)
+    }
+    
     
     private func filterAndSortCoins(text: String, coins: [CoinModel], sort: SortOption)->[CoinModel]{
         var updatedCoins = filterCoins(text: text, coins: coins)
