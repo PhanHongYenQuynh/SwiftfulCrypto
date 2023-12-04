@@ -21,6 +21,7 @@ struct ContactUsView: View {
                     .clipped()
                     .padding()
                 contactUs
+                hutech
             }
             .listStyle(SidebarListStyle())
             .navigationTitle(NSLocalizedString("Contact us", comment: ""))
@@ -45,7 +46,7 @@ extension ContactUsView{
                         .font(.headline)
                         .foregroundColor(.accentColor)
                     Spacer()
-                    Text("hello@cryptotracker.com")
+                    Text("phanquynh.devpro@gmail.com")
                         .font(.callout)
                 }
                 
@@ -54,7 +55,7 @@ extension ContactUsView{
                         .font(.headline)
                         .foregroundColor(.accentColor)
                     Spacer()
-                    Text("+1(559) 742 4592")
+                    Text("(028) 5445 7777")
                         .font(.callout)
                         .foregroundColor(.green)
                 }
@@ -64,11 +65,28 @@ extension ContactUsView{
                         .font(.headline)
                         .foregroundColor(.accentColor)
                     Spacer()
-                    Link("https://www.coingecko.com/faq", destination: faq)
+                    Link("https://www.hutech.edu.vn", destination: faq)
                         .font(.callout)
                 }
             }
             
+        }
+    }
+    private var hutech: some View{
+        Section(header: Text("HUTECH")){
+            VStack(alignment: .leading){
+                Image("hutech")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                Text("This crypto tracking app is developed by Phan Hong Yen Quynh, a student at Hutech University of Technology. It's a specialized project filled with creativity and motivation.")
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .foregroundColor(Color.theme.accent)
+                
+            }
+            .padding(.vertical)
         }
     }
 }
