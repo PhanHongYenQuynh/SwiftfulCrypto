@@ -28,6 +28,7 @@ struct SettingView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
+
     
     @State private var Email = ""
     @State private var Password = ""
@@ -211,12 +212,11 @@ extension SettingView{
                 .onChange(of: enableNotifications) { newValue in
                     if newValue {
                         notificationManager.requestAuthorization()
-                        // Ensure 'selectedCoin' is set to the desired CoinModel
-                        guard let selectedCoin = selectedCoin else {
-                            // Handle the case when no coin is selected
-                            return
+                        if let selectedCoin = selectedCoin {
+                            notificationManager.scheduleNotification(coin: selectedCoin)
+                        } else {
+                            // Handle the case where there's no selected coin
                         }
-                        notificationManager.scheduleNotification(coin: selectedCoin)
                     } else {
                         notificationManager.cancelNotification()
                     }
@@ -234,7 +234,6 @@ extension SettingView{
             }
         }
     }
-
 
     
     private var orthers: some View{

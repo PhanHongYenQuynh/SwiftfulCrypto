@@ -38,28 +38,28 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         completionHandler()
     }
     
-    
     func scheduleNotification(coin: CoinModel) {
         let content = UNMutableNotificationContent()
         content.title = "\(coin.name) Price Alert!"
         content.subtitle = "\(coin.symbol.uppercased()) price has increased. Check it out!"
         content.sound = .default
-        content.badge = 0
+        content.badge = 1
 
         // Thiết lập thời gian thông báo (ví dụ: sau 5 giây)
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
-
+        
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
             content: content,
             trigger: trigger)
-
+        
+        // Đặt đối tượng delegate cho UNUserNotificationCenter
         UNUserNotificationCenter.current().delegate = self
+        
+        // Đăng ký thông báo
         UNUserNotificationCenter.current().add(request)
     }
-
-    
-    
+        
     
     // Function to check and send notifications when the price changes
     func checkAndSendNotification(newPrice: Double, coin: CoinModel) {
