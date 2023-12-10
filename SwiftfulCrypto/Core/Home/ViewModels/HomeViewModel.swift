@@ -93,7 +93,7 @@ class HomeViewModel: ObservableObject{
         for coin in coins {
             // Kiểm tra giá coin tăng, ví dụ: giả sử tăng 5%
             if let priceChangePercentage = coin.priceChangePercentage24H, priceChangePercentage >= 5.0 {
-                NotificationManager.instance.scheduleNotification()
+                NotificationManager.instance.scheduleNotification(coin: coin)
             }
         }
     }

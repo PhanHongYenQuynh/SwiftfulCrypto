@@ -62,7 +62,7 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
     
     
     // Function to check and send notifications when the price changes
-    func checkAndSendNotification(newPrice: Double) {
+    func checkAndSendNotification(newPrice: Double, coin: CoinModel) {
         guard let currentPrice = currentPrice else {
             // If the current price is not available, save the new price and exit
             self.currentPrice = newPrice
@@ -75,7 +75,7 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
 
         // If the price changes, send a notification
         if abs(percentageChange) >= 1.0 {
-            scheduleNotification()
+            scheduleNotification(coin: coin)
         }
 
         // Save the new price
@@ -99,7 +99,12 @@ struct LocalNotification: View {
                 notificationManager.requestAuthorization()
             }
             Button("Schedule notification") {
-                notificationManager.scheduleNotification()
+                // Make sure 'selectedCoin' is set to the desired CoinModel
+                guard let selectedCoin = selectedCoin else {
+                    // Handle the case when no coin is selected
+                    return
+                }
+                notificationManager.scheduleNotification(coin: selectedCoin)
             }
             
             Button("Cancel notification") {

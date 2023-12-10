@@ -206,19 +206,22 @@ extension SettingView{
     
     private var appsettings: some View {
         Section(header: Text("App Settings")) {
-           
             Toggle("Notification", isOn: $enableNotifications)
                 .toggleStyle(SwitchToggleStyle(tint: .green))
-            
                 .onChange(of: enableNotifications) { newValue in
                     if newValue {
                         notificationManager.requestAuthorization()
-                        notificationManager.scheduleNotification()
+                        // Ensure 'selectedCoin' is set to the desired CoinModel
+                        guard let selectedCoin = selectedCoin else {
+                            // Handle the case when no coin is selected
+                            return
+                        }
+                        notificationManager.scheduleNotification(coin: selectedCoin)
                     } else {
                         notificationManager.cancelNotification()
                     }
                 }
-            
+
             Picker("Language", selection: $languageManager.selectedLanguage) {
                 ForEach(Language.allCases, id: \.self) { language in
                     Text(language.localizedString)
@@ -231,6 +234,7 @@ extension SettingView{
             }
         }
     }
+
 
     
     private var orthers: some View{
