@@ -41,8 +41,9 @@ class HomeViewModel: ObservableObject{
             .combineLatest(coinDataService.$allcoins, $sortOption)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .map(filterAndSortCoins)
-            .sink{[weak self] (returnedCoins) in
+            .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
+                self?.checkAndSendPriceAlerts(for: returnedCoins)
             }
             .store(in: &cancellables)
         
@@ -88,8 +89,13 @@ class HomeViewModel: ObservableObject{
     }
     
     // Function to check and send notifications.
-    func checkAndSendNotification(newPrice: Double) {
-        NotificationManager.instance.checkAndSendNotification(newPrice: newPrice)
+    func checkAndSendPriceAlerts(for coins: [CoinModel]) {
+        for coin in coins {
+            // Kiểm tra giá coin tăng, ví dụ: giả sử tăng 5%
+            if let priceChangePercentage = coin.priceChangePercentage24H, priceChangePercentage >= 5.0 {
+                NotificationManager.instance.scheduleNotification()
+            }
+        }
     }
     
     

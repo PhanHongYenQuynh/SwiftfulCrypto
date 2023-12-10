@@ -37,7 +37,30 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         // Gọi completionHandler khi bạn đã xử lý xong sự kiện
         completionHandler()
     }
+    
+    
+    func scheduleNotification(coin: CoinModel) {
+        let content = UNMutableNotificationContent()
+        content.title = "\(coin.name) Price Alert!"
+        content.subtitle = "\(coin.symbol.uppercased()) price has increased. Check it out!"
+        content.sound = .default
+        content.badge = 0
 
+        // Thiết lập thời gian thông báo (ví dụ: sau 5 giây)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger)
+
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request)
+    }
+
+    
+    
+    
     // Function to check and send notifications when the price changes
     func checkAndSendNotification(newPrice: Double) {
         guard let currentPrice = currentPrice else {
@@ -59,27 +82,6 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         self.currentPrice = newPrice
     }
     
-    func scheduleNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Coin Price Alert!"
-        content.subtitle = "Bitcoin price has changed! Check it out."
-        content.sound = .default
-        content.badge = 1
-
-        // time
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
-        
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-            content: content,
-            trigger: trigger)
-        
-        // Đặt đối tượng delegate cho UNUserNotificationCenter
-        UNUserNotificationCenter.current().delegate = self
-        
-        // Đăng ký thông báo
-        UNUserNotificationCenter.current().add(request)
-    }
     
     func cancelNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
@@ -89,6 +91,7 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
 
 struct LocalNotification: View {
     @StateObject private var notificationManager = NotificationManager()
+    @State private var selectedCoin: CoinModel?
     
     var body: some View {
         VStack(spacing: 40) {
@@ -98,6 +101,7 @@ struct LocalNotification: View {
             Button("Schedule notification") {
                 notificationManager.scheduleNotification()
             }
+            
             Button("Cancel notification") {
                 notificationManager.cancelNotification()
             }
