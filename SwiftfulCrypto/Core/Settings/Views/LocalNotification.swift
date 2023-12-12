@@ -14,6 +14,12 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
    
     // Save the current price of the coin
     var currentPrice: Double?
+    
+    // Save the current badge value
+    @Published var badgeValue: Int = 0
+    
+    // Variable to track whether a notification is being presented
+    @Published var isNotificationPresented: Bool = false
 
     func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
@@ -34,6 +40,10 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         // Xoá tất cả thông báo đã được hiển thị
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         
+        // Đặt giá trị badgeValue về 0 khi người dùng mở thông báo
+        badgeValue = 0
+        isNotificationPresented = true // Set flag to indicate that a notification is being presented
+        
         // Gọi completionHandler khi bạn đã xử lý xong sự kiện
         completionHandler()
     }
@@ -43,7 +53,11 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         content.title = "\(coin.name) Price Alert!"
         content.subtitle = "\(coin.symbol.uppercased()) price has increased. Check it out!"
         content.sound = .default
-        content.badge = 1
+        
+        
+        // Tăng giá trị badgeValue khi có thông báo mới
+//        badgeValue += 1
+//        content.badge = NSNumber(value: badgeValue)
 
         // Thiết lập thời gian thông báo (ví dụ: sau 5 giây)
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
@@ -86,7 +100,9 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
     func cancelNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        isNotificationPresented = false
     }
+    
 }
 
 struct LocalNotification: View {
@@ -111,9 +127,18 @@ struct LocalNotification: View {
                 notificationManager.cancelNotification()
             }
         }
-        .onAppear {
-            UIApplication.shared.applicationIconBadgeNumber = 0
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            // Check if a notification is being presented and reset badgeValue if true
+            if notificationManager.isNotificationPresented {
+                UIApplication.shared.applicationIconBadgeNumber = 0
+                notificationManager.isNotificationPresented = false
+            }else {
+                // Decrease badgeValue when a new notification is viewed
+                notificationManager.badgeValue -= 1
+                UIApplication.shared.applicationIconBadgeNumber = max(0, notificationManager.badgeValue)
+            }
         }
+
     }
 }
 
