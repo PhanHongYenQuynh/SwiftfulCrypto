@@ -127,10 +127,6 @@ struct CryptoWidgetEntryView : View {
     func MediumSizeWidget()->some View{
         ZStack{
             VStack{
-                Rectangle()
-                    .fill(Color("WidgetBackground"))
-                
-                
                 HStack{
                     // Load image dynamically based on crypto.image
                     if let url = URL(string: crypto.image),
@@ -207,7 +203,7 @@ struct CryptoWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 CryptoWidgetEntryView(crypto: entry)
-                    .background(Color("WidgetBackground"))
+                    .containerBackground(.black, for: .widget)
             } else {
                 CryptoWidgetEntryView(crypto: entry)
                     .padding()
