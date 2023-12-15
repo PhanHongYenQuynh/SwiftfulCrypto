@@ -128,7 +128,7 @@ struct CryptoWidgetEntryView : View {
     func SmallSizeWidget()->some View{
         ZStack{
             VStack{
-                HStack{
+                HStack(alignment: .top) {
                     // Load image dynamically based on crypto.image
                     if let url = URL(string: crypto.image),
                        let imageData = try? Data(contentsOf: url),
@@ -137,34 +137,28 @@ struct CryptoWidgetEntryView : View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 30, height: 30)
-                        
-                    }
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(crypto.name)
+                                .font(.subheadline)
+                                .foregroundColor(.white)
 
-                    VStack(alignment: .leading){
-                        Text(crypto.symbol)
-                            .foregroundColor(.white)
-                        Text(crypto.currentPrice.toCurrency())
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
+                            Text(crypto.currentPrice.toCurrency())
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+
+                            Text(crypto.priceChange.toString(floatingPoint: 1) + "%")
+                                .fontWeight(.semibold)
+                                .foregroundColor(crypto.priceChange < 0 ? .red : Color("GreenColor"))
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                     }
-                    .frame(maxWidth: .infinity,alignment: .leading)
                     
-                   
                 }
-                
-                HStack{
-                    VStack(spacing: 8){
-                        Text("This week")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                        Text(crypto.priceChange.toString(floatingPoint: 1) + "%")
-                            .fontWeight(.semibold)
-                            .foregroundColor(crypto.priceChange < 0 ? .red : Color("GreenColor"))
-                    }
-                }
+                .padding(.all)
             }
-            .padding(.all)
+            
         }
     }
     
