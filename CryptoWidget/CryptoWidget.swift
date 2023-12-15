@@ -137,18 +137,20 @@ struct CryptoWidgetEntryView : View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 30, height: 30)
+                        
                     }
 
                     VStack(alignment: .leading){
                         Text(crypto.symbol)
                             .foregroundColor(.white)
+                        Text(crypto.currentPrice.toCurrency())
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                         
                     }
                     .frame(maxWidth: .infinity,alignment: .leading)
                     
-                    Text(crypto.currentPrice.toCurrency())
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                   
                 }
                 
                 HStack{
