@@ -83,6 +83,8 @@ struct CryptoWidgetEntryView : View {
         // Building Widget UI With Swift Charts
         if family == .systemMedium{
             MediumSizeWidget()
+        }else if family == .systemSmall{
+            SmallSizeWidget()
         }else{
             LockScreenWidget()
         }
@@ -99,7 +101,7 @@ struct CryptoWidgetEntryView : View {
                         .resizable()
                         .renderingMode(.template)
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 10, height: 10)
                 }
                 
             }
@@ -119,6 +121,51 @@ struct CryptoWidgetEntryView : View {
             
             Text(crypto.priceChange.toString(floatingPoint: 1) + "%")
                 .font(.caption2)
+        }
+    }
+    
+    @ViewBuilder
+    func SmallSizeWidget()->some View{
+        ZStack{
+            VStack{
+                HStack{
+                    // Load image dynamically based on crypto.image
+                    if let url = URL(string: crypto.image),
+                       let imageData = try? Data(contentsOf: url),
+                       let uiImage = UIImage(data: imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                    }
+
+                    VStack(alignment: .leading){
+                        Text(crypto.name)
+                            .foregroundColor(.white)
+                        
+                        Text(crypto.symbol)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity,alignment: .leading)
+                    
+                    Text(crypto.currentPrice.toCurrency())
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                }
+                
+                HStack(spacing: 15){
+                    VStack(spacing: 8){
+                        Text("This week")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                        Text(crypto.priceChange.toString(floatingPoint: 1) + "%")
+                            .fontWeight(.semibold)
+                            .foregroundColor(crypto.priceChange < 0 ? .red : Color("GreenColor"))
+                    }
+                }
+            }
+            .padding(.all)
         }
     }
     
@@ -214,7 +261,7 @@ struct CryptoWidget: Widget {
         // For Lock Screen Widget
         // Simply Add Accessory Type in the Widget Family
         
-        .supportedFamilies([.systemMedium, .accessoryRectangular])
+        .supportedFamilies([.systemMedium, .systemSmall, .accessoryRectangular])
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
     }
@@ -222,10 +269,11 @@ struct CryptoWidget: Widget {
 
 struct CryptoWidget_Previews: PreviewProvider{
     static var previews: some View{
-        CryptoWidgetEntryView(crypto: Crypto(symbol: "PreviewSymbol", name: "PreviewName", image: "PreviewImage", date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
-    }
+            CryptoWidgetEntryView(crypto: Crypto(symbol: "PreviewSymbol", name: "PreviewName", image: "PreviewImage", date: Date()))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        }
 }
+
 
 // MARK: - EXTENSIONS
 extension Double{
