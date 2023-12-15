@@ -136,16 +136,13 @@ struct CryptoWidgetEntryView : View {
                         Image(uiImage: uiImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
+                            .frame(width: 30, height: 30)
                     }
 
                     VStack(alignment: .leading){
-                        Text(crypto.name)
+                        Text(crypto.symbol)
                             .foregroundColor(.white)
                         
-                        Text(crypto.symbol)
-                            .font(.caption)
-                            .foregroundColor(.gray)
                     }
                     .frame(maxWidth: .infinity,alignment: .leading)
                     
@@ -154,7 +151,7 @@ struct CryptoWidgetEntryView : View {
                         .foregroundColor(.white)
                 }
                 
-                HStack(spacing: 15){
+                HStack{
                     VStack(spacing: 8){
                         Text("This week")
                             .font(.caption)
