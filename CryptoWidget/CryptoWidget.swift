@@ -267,12 +267,19 @@ struct CryptoWidget: Widget {
     }
 }
 
-struct CryptoWidget_Previews: PreviewProvider{
-    static var previews: some View{
-            CryptoWidgetEntryView(crypto: Crypto(symbol: "PreviewSymbol", name: "PreviewName", image: "PreviewImage", date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-        }
+//struct CryptoWidget_Previews: PreviewProvider{
+//    static var previews: some View{
+//            CryptoWidgetEntryView(crypto: Crypto(symbol: "PreviewSymbol", name: "PreviewName", image: "PreviewImage", date: Date()))
+//            .previewContext(WidgetPreviewContext(family: .systemSmall))
+//        }
+//}
+
+#Preview(as: .systemSmall) {
+    CryptoWidget()
+} timeline: {
+    Crypto(symbol: "PreviewSymbol", name: "PreviewName", image: "PreviewImage", date: Date());
 }
+
 
 
 // MARK: - EXTENSIONS
