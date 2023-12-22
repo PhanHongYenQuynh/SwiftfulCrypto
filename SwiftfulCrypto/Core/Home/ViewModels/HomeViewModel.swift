@@ -67,9 +67,6 @@ class HomeViewModel: ObservableObject{
                 self?.isLoading = false
             }
             .store(in: &cancellables)
-        
-        
-        
     }
     
     
