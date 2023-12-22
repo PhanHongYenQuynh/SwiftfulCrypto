@@ -55,9 +55,9 @@ class NotificationManager: NSObject, ObservableObject, UNUserNotificationCenterD
         content.sound = .default
         
         
-        // Tăng giá trị badgeValue khi có thông báo mới
-//        badgeValue += 1
-//        content.badge = NSNumber(value: badgeValue)
+//         Tăng giá trị badgeValue khi có thông báo mới
+        badgeValue += 1
+        content.badge = NSNumber(value: badgeValue)
 
         // Thiết lập thời gian thông báo (ví dụ: sau 5 giây)
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
