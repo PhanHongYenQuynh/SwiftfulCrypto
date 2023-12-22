@@ -28,6 +28,7 @@ struct SettingView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
+
     
     @State private var Email = ""
     @State private var Password = ""
@@ -46,7 +47,7 @@ struct SettingView: View {
     @AppStorage("enableNotifications") private var enableNotifications = false
 
     @State private var isContactUsActive = false
-    
+    @State private var selectedCoin: CoinModel?
     
     let privacyPolicy = URL(string: "https://www.coingecko.com/en/privacy")!
     let termsofService = URL(string: "https://www.coingecko.com/en/terms")!
@@ -205,32 +206,35 @@ extension SettingView{
     }
     
     private var appsettings: some View {
-            Section(header: Text("App Settings")) {
-               
-                Toggle("Notification", isOn: $enableNotifications)
-                    .toggleStyle(SwitchToggleStyle(tint: .green))
-                
-                    .onChange(of: enableNotifications) { newValue in
-                        if newValue {
-                            notificationManager.requestAuthorization()
-                            notificationManager.scheduleNotification()
+        Section(header: Text("App Settings")) {
+            Toggle("Notification", isOn: $enableNotifications)
+                .toggleStyle(SwitchToggleStyle(tint: .green))
+                .onChange(of: enableNotifications) { newValue in
+                    if newValue {
+                        notificationManager.requestAuthorization()
+                        if let selectedCoin = selectedCoin {
+                            notificationManager.scheduleNotification(coin: selectedCoin)
                         } else {
-                            notificationManager.cancelNotification()
+                            // Handle the case where there's no selected coin
                         }
-                    }
-                
-                Picker("Language", selection: $languageManager.selectedLanguage) {
-                    ForEach(Language.allCases, id: \.self) { language in
-                        Text(language.localizedString)
+                    } else {
+                        notificationManager.cancelNotification()
                     }
                 }
-                .pickerStyle(MenuPickerStyle())
-                .onChange(of: languageManager.selectedLanguage) { _ in
-                    // Call the function to handle language changes
-                    languageManager.changeLanguage(languageManager.selectedLanguage)
+
+            Picker("Language", selection: $languageManager.selectedLanguage) {
+                ForEach(Language.allCases, id: \.self) { language in
+                    Text(language.localizedString)
                 }
             }
+            .pickerStyle(MenuPickerStyle())
+            .onChange(of: languageManager.selectedLanguage) { _ in
+                // Call the function to handle language changes
+                languageManager.changeLanguage(languageManager.selectedLanguage)
+            }
         }
+    }
+
     
     private var orthers: some View{
         Section(header: Text("Others")){

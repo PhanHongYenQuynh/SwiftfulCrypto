@@ -15,6 +15,8 @@ class PortfolioDataService {
     private let containerName: String = "PortfolioContainer"
     private let entityName: String = "PortfolioEntity"
     
+    let notificationManager = NotificationManager()
+    
     @Published var savedEntities: [PortfolioEntity] = []
     
     init() {
@@ -50,6 +52,7 @@ class PortfolioDataService {
             add(coin: coin, amount: amount, userID: userID)
         }
     }
+    
     
     func deletePortfolio(coinID: String) {
         if let entity = savedEntities.first(where: { $0.coinID == coinID }) {

@@ -17,7 +17,7 @@ class HomeViewModel: ObservableObject{
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     @Published var sortOption: SortOption = .holdings
-  
+    @Published var enableNotifications: Bool = false
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
@@ -41,8 +41,9 @@ class HomeViewModel: ObservableObject{
             .combineLatest(coinDataService.$allcoins, $sortOption)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .map(filterAndSortCoins)
-            .sink{[weak self] (returnedCoins) in
+            .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
+                self?.checkAndSendPriceAlerts(for: returnedCoins)
             }
             .store(in: &cancellables)
         
@@ -85,8 +86,13 @@ class HomeViewModel: ObservableObject{
     }
     
     // Function to check and send notifications.
-    func checkAndSendNotification(newPrice: Double) {
-        NotificationManager.instance.checkAndSendNotification(newPrice: newPrice)
+    func checkAndSendPriceAlerts(for coins: [CoinModel]) {
+        for coin in coins {
+            // Kiểm tra giá coin tăng, ví dụ: giả sử tăng 1%
+            if let priceChangePercentage = coin.priceChangePercentage24H, priceChangePercentage >= 1.0 {
+                NotificationManager.instance.scheduleNotification(coin: coin)
+            }
+        }
     }
     
     
@@ -135,14 +141,15 @@ class HomeViewModel: ObservableObject{
         }
     }
     
+    
     private func mapAllCoinsToPortfolioCoins(allCoins: [CoinModel], portfolioEntities: [PortfolioEntity]) -> [CoinModel]{
-        allCoins
-            .compactMap{ (coin) -> CoinModel? in
-                guard let entity = portfolioEntities.first(where: { $0.coinID == coin.id}) else {
-                    return nil
+            allCoins
+                .compactMap{ (coin) -> CoinModel? in
+                    guard let entity = portfolioEntities.first(where: { $0.coinID == coin.id}) else {
+                        return nil
+                    }
+                    return coin.updateHoldings(amount: entity.amount)
                 }
-                return coin.updateHoldings(amount: entity.amount)
-            }
     }
     
     
